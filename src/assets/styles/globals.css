@@ -1,0 +1,52 @@
+:root {
+  --g-navbar-min-height: 50px;
+  --g-tabbar-min-height: 60px;
+
+  color-scheme: light;
+
+  &.dark {
+    color-scheme: dark;
+  }
+}
+
+* {
+  scrollbar-color: hsl(var(--scrollbar-color)) transparent;
+  scrollbar-width: thin;
+  border-color: hsl(var(--border));
+}
+
+html {
+  overscroll-behavior: none;
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  color: hsl(var(--foreground));
+  background: hsl(var(--background));
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 全局样式 */
+#app {
+  max-width: 600px !important;
+  height: auto !important;
+  min-height: 100vh;
+  margin-right: auto !important;
+  margin-left: auto !important;
+  overflow: hidden auto;
+  font-size: 14px;
+  background-color: var(--g-bg);
+  box-shadow: 0 0 0 1px rgb(136 136 136 / 12%);
+}
+
+.medium-zoom-overlay,
+.medium-zoom-image--opened {
+  z-index: 1100;
+}
+
+@supports (min-height: 100dvh) {
+  #app {
+    min-height: 100dvh;
+  }
+}

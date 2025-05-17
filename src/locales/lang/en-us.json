@@ -1,0 +1,58 @@
+{
+  "pages": {
+    "navbar": {
+      "root": "Navbar",
+      "default": "Default navbar",
+      "none": "No navbar",
+      "preset": "Preset button",
+      "mode": "Navbar mode",
+      "style": "Navbar style",
+      "title-no-center": "Title not centered",
+      "custom-title": "Custom title",
+      "custom-area": "Custom area",
+      "custom-extra": "Custom extra content",
+      "custom-navbar": "Custom navbar"
+    },
+    "tabbar": {
+      "root": "Tabbar",
+      "default": "Default tabbar",
+      "mode": "Tabbar mode",
+      "style": "Tabbar style",
+      "multi": "Multiple sets of tabbars",
+      "badge": "Badge",
+      "custom-area": "Custom area",
+      "custom-extra": "Custom extra content"
+    },
+    "permission": {
+      "root": "Permission validation"
+    },
+    "function": {
+      "root": "Function",
+      "errorLog": "Error log",
+      "font": "Costom Font",
+      "i18n": "Internationalization",
+      "icon": "Icon",
+      "keepAlive": "Page cache",
+      "watermark": "Watermark",
+      "zoomable": "Zoomable",
+      "title": "Dynamic title",
+      "scroll": "Saved posotion"
+    }
+  },
+  "tabbar": {
+    "default": {
+      "feature": "Feature",
+      "index": "Index",
+      "user": "User"
+    },
+    "second": {
+      "flower": "Flower",
+      "grass": "Grass"
+    },
+    "third": {
+      "dot": "Dot",
+      "number": "Number",
+      "text": "Text"
+    }
+  }
+}

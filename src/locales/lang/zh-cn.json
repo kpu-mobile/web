@@ -1,0 +1,58 @@
+{
+  "pages": {
+    "navbar": {
+      "root": "导航栏",
+      "default": "默认导航栏",
+      "none": "无导航栏",
+      "preset": "预设按钮",
+      "mode": "导航栏模式",
+      "style": "导航栏样式",
+      "title-no-center": "标题非居中",
+      "custom-title": "自定义标题",
+      "custom-area": "自定义区域",
+      "custom-navbar": "自定义导航栏",
+      "extra": "额外区域"
+    },
+    "tabbar": {
+      "root": "标签栏",
+      "default": "默认标签栏",
+      "mode": "标签栏模式",
+      "style": "标签栏样式",
+      "multi": "多套标签栏",
+      "badge": "角标",
+      "custom-area": "自定义区域",
+      "extra": "额外区域"
+    },
+    "permission": {
+      "root": "权限验证"
+    },
+    "function": {
+      "root": "功能",
+      "errorLog": "错误日志",
+      "font": "自定义字体",
+      "i18n": "国际化",
+      "icon": "图标",
+      "keepAlive": "页面缓存",
+      "watermark": "水印",
+      "zoomable": "图片预览",
+      "title": "动态标题",
+      "scroll": "记录滚动位置"
+    }
+  },
+  "tabbar": {
+    "default": {
+      "feature": "特色",
+      "index": "主页",
+      "user": "我的"
+    },
+    "second": {
+      "flower": "花花",
+      "grass": "草草"
+    },
+    "third": {
+      "dot": "点",
+      "number": "数字",
+      "text": "文本"
+    }
+  }
+}
