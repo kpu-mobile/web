@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { loadingHide, loadingShow } from 'src/ui/components/KmLoading'
+import { loadingHide, loadingShow } from '@/ui/components/KmLoading'
 
 definePage({
   meta: {
