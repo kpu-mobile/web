@@ -23,6 +23,7 @@
     "release": "bumpp"
   },
   "dependencies": {
+    "@number-flow/vue": "^0.4.7",
     "@vant/touch-emulator": "^1.4.0",
     "@vee-validate/zod": "^4.15.0",
     "@visactor/vchart": "^1.13.8",
@@ -40,6 +41,7 @@
     "lucide-vue-next": "^0.501.0",
     "medium-zoom": "^1.1.0",
     "mitt": "^3.0.1",
+    "motion-v": "1.1.0-alpha.1",
     "nprogress": "^0.2.0",
     "pinia": "^3.0.2",
     "qrcode": "^1.5.4",
