@@ -209,11 +209,11 @@ const data: {
     title: '内建组件',
     icon: 'i-bx:bxs-component',
     routes: [
-      // {
-      //   path: '/feature/component/built_in/animated_count_to/',
-      //   title: '数字动画',
-      //   pro: true,
-      // },
+      {
+        path: '/feature/component/built_in/animated_count_to/',
+        title: '数字动画',
+        pro: true,
+      },
       {
         path: '/feature/component/built_in/avatar/',
         title: '头像',
@@ -234,16 +234,16 @@ const data: {
         path: '/feature/component/built_in/checkbox/',
         title: '复选框',
       },
-      // {
-      //   path: '/feature/component/built_in/count_to/',
-      //   title: '计数到',
-      //   pro: true,
-      // },
-      // {
-      //   path: '/feature/component/built_in/digital_card/',
-      //   title: '数字卡片',
-      //   pro: true,
-      // },
+      {
+        path: '/feature/component/built_in/count_to/',
+        title: '计数到',
+        pro: true,
+      },
+      {
+        path: '/feature/component/built_in/digital_card/',
+        title: '数字卡片',
+        pro: true,
+      },
       {
         path: '/feature/component/built_in/divider/',
         title: '分割线',
@@ -260,11 +260,11 @@ const data: {
         path: '/feature/component/built_in/loading/',
         title: '加载遮罩',
       },
-      // {
-      //   path: '/feature/component/built_in/marquee/',
-      //   title: '跑马灯',
-      //   pro: true,
-      // },
+      {
+        path: '/feature/component/built_in/marquee/',
+        title: '跑马灯',
+        pro: true,
+      },
       {
         path: '/feature/component/built_in/modal/',
         title: '弹窗',
@@ -273,21 +273,21 @@ const data: {
         path: '/feature/component/built_in/page_main/',
         title: '内容块',
       },
-      // {
-      //   path: '/feature/component/built_in/particles_bg/',
-      //   title: '粒子背景',
-      //   pro: true,
-      // },
-      // {
-      //   path: '/feature/component/built_in/pattern_bg/',
-      //   title: '图案背景',
-      //   pro: true,
-      // },
-      // {
-      //   path: '/feature/component/built_in/scratch_off/',
-      //   title: '刮刮乐',
-      //   pro: true,
-      // },
+      {
+        path: '/feature/component/built_in/particles_bg/',
+        title: '粒子背景',
+        pro: true,
+      },
+      {
+        path: '/feature/component/built_in/pattern_bg/',
+        title: '图案背景',
+        pro: true,
+      },
+      {
+        path: '/feature/component/built_in/scratch_off/',
+        title: '刮刮乐',
+        pro: true,
+      },
       {
         path: '/feature/component/built_in/scroll_area/',
         title: '滚动区域',
@@ -300,11 +300,11 @@ const data: {
         path: '/feature/component/built_in/slider/',
         title: '滑块',
       },
-      // {
-      //   path: '/feature/component/built_in/sparkline/',
-      //   title: '迷你图',
-      //   pro: true,
-      // },
+      {
+        path: '/feature/component/built_in/sparkline/',
+        title: '迷你图',
+        pro: true,
+      },
       {
         path: '/feature/component/built_in/spring_drawer/',
         title: '弹簧抽屉',
@@ -318,11 +318,11 @@ const data: {
         path: '/feature/component/built_in/tabs/',
         title: '标签页',
       },
-      // {
-      //   path: '/feature/component/built_in/timeline/',
-      //   title: '时间线',
-      //   pro: true,
-      // },
+      {
+        path: '/feature/component/built_in/timeline/',
+        title: '时间线',
+        pro: true,
+      },
       {
         path: '/feature/component/built_in/toast/',
         title: '轻提示',
