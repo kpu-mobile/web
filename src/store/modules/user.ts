@@ -6,7 +6,7 @@ const useUserStore = defineStore(
   'user',
   () => {
     const account = ref(localStorage.account ?? '')
-    const token = ref(localStorage.token ?? '')
+    const token = ref<string>(localStorage.token ?? '')
     const avatar = ref(localStorage.avatar ?? '')
     const isGetPermissions = ref(false)
     const permissions = ref<string[]>([])
@@ -24,12 +24,12 @@ const useUserStore = defineStore(
     }) {
       return new Promise((resolve, reject) => {
         apiUser.login(data).then((res) => {
-          localStorage.setItem('account', res.data.account)
-          localStorage.setItem('token', res.data.token)
-          localStorage.setItem('avatar', res.data.avatar)
-          account.value = res.data.account
-          token.value = res.data.token
-          avatar.value = res.data.avatar
+          localStorage.setItem('account', res.account)
+          localStorage.setItem('token', res.token)
+          localStorage.setItem('avatar', res.avatar)
+          account.value = res.account
+          token.value = res.token
+          avatar.value = res.avatar
           resolve(res)
         }).catch((error) => {
           reject(error)
@@ -49,7 +49,7 @@ const useUserStore = defineStore(
     // 获取权限
     async function getPermissions() {
       const res = await apiUser.permission()
-      permissions.value = res.data.permissions
+      permissions.value = res.permissions
       isGetPermissions.value = true
     }
 

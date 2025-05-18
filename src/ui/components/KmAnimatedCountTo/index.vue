@@ -3,15 +3,6 @@ import type { Format, Trend, Value } from 'number-flow'
 import type { HTMLAttributes } from 'vue'
 import NumberFlow from '@number-flow/vue'
 
-// type Props = Partial<NumberFlowProps> & {
-//   locales?: Intl.LocalesArgument
-//   format?: Format
-//   value: Value
-//   prefix?: string
-//   suffix?: string
-//   willChange?: boolean
-//   class?: HTMLAttributes['class']
-// }
 const props = withDefaults(
   defineProps<
     {

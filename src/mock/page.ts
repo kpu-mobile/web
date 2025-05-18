@@ -16,8 +16,8 @@ export default defineFakeRoute([
         return index >= ~~from && index < (~~from + ~~limit)
       })
       return {
-        error: '',
-        status: 1,
+        msg: '',
+        code: 0,
         data: {
           list: pageList,
           total: allList.length,

@@ -80,10 +80,10 @@ function testAccount(account: string) {
             演示账号一键登录
           </KmDivider>
           <div class="text-center space-x-4">
-            <KmButton size="sm" @click="testAccount('admin')">
+            <KmButton size="sm" @click.stop.prevent="testAccount('admin')">
               admin
             </KmButton>
-            <KmButton variant="outline" size="sm" @click="testAccount('test')">
+            <KmButton variant="outline" size="sm" @click.stop.prevent="testAccount('test')">
               test
             </KmButton>
           </div>
