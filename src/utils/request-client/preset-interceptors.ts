@@ -1,9 +1,8 @@
 import type { RequestClient } from './request-client'
 import type { MakeErrorMessageFn, ResponseInterceptorConfig } from './types'
-// import { $t } from '@/locales'
+import { $t } from '@/locales'
 import { isFunction } from '@/utils'
 import axios from 'axios'
-import { useI18n } from 'vue-i18n'
 
 export function defaultResponseInterceptor({
   codeField = 'code',
@@ -116,7 +115,6 @@ export function errorMessageResponseInterceptor(makeErrorMessage?: MakeErrorMess
       if (axios.isCancel(error)) {
         return Promise.reject(error)
       }
-      const { t: $t } = useI18n()
       const err: string = error?.toString?.() ?? ''
       let errMsg = ''
       if (err?.includes('Network Error')) {

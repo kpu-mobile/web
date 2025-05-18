@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker'
 import { defineFakeRoute } from 'vite-plugin-fake-server/client'
 
-let i = 1
+// let i = 1
 export default defineFakeRoute([
   {
     url: '/mock/user/login',
@@ -21,7 +21,7 @@ export default defineFakeRoute([
   {
     url: '/mock/user/permission',
     method: 'get',
-    response: ({ headers }, _req, res) => {
+    response: ({ headers }, _req, _res) => {
       let permissions: string[] = []
       if (headers.token?.indexOf('admin') === 7) {
         permissions = [
@@ -36,18 +36,19 @@ export default defineFakeRoute([
           'permission.browse',
         ]
       }
-      const code = i++ % 2 === 0 ? 0 : 401
-      if (code === 401) {
-        res.statusCode = 401
-        return {
-          msg: 'token is expired',
-          code,
-          data: {},
-        }
-      }
+      // 测试 401 错误
+      // const code = i++ % 2 === 0 ? 0 : 401
+      // if (code === 401) {
+      //   res.statusCode = 401
+      //   return {
+      //     msg: 'token is expired',
+      //     code,
+      //     data: {},
+      //   }
+      // }
       return {
         msg: '',
-        code,
+        code: 0,
         data: {
           permissions,
         },

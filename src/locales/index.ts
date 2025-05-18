@@ -37,9 +37,8 @@ for (const key in messages) {
   }
 }
 // 用于路由 meta.i18n 配置，方便在 VSCode I18n Ally 插件进行显示，无实际作用
-function $t(key: string) {
-  return key
-}
+const $t = i18n.global.t
+
 export default {
   install: setupI18n,
 }
