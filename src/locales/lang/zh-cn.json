@@ -11,6 +11,7 @@
       "custom-title": "自定义标题",
       "custom-area": "自定义区域",
       "custom-navbar": "自定义导航栏",
+      "custom-extra": "自定义额外区域",
       "extra": "额外区域"
     },
     "tabbar": {
@@ -21,6 +22,7 @@
       "multi": "多套标签栏",
       "badge": "角标",
       "custom-area": "自定义区域",
+      "custom-extra": "自定义额外区域",
       "extra": "额外区域"
     },
     "permission": {

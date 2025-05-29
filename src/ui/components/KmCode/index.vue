@@ -32,10 +32,10 @@ const { copy, copied, isSupported } = useClipboard()
 <i18n lang="json">
 {
   "zh-cn": {
-      "copied": "已复制"
+    "copied": "已复制"
   },
   "en-US": {
-      "copied": "Copied"
+    "copied": "Copyed"
   }
 }
 </i18n>

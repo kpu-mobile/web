@@ -11,7 +11,8 @@
       "custom-title": "Custom title",
       "custom-area": "Custom area",
       "custom-extra": "Custom extra content",
-      "custom-navbar": "Custom navbar"
+      "custom-navbar": "Custom navbar",
+      "extra": "Navbar Extra"
     },
     "tabbar": {
       "root": "Tabbar",
@@ -21,7 +22,8 @@
       "multi": "Multiple sets of tabbars",
       "badge": "Badge",
       "custom-area": "Custom area",
-      "custom-extra": "Custom extra content"
+      "custom-extra": "Custom extra content",
+      "extra": "Tabbar Extra"
     },
     "permission": {
       "root": "Permission validation"

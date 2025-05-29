@@ -26,5 +26,10 @@
     "json",
     "jsonc",
     "yaml"
-  ]
+  ],
+  "i18n-ally.localesPaths": [
+    "src/locales",
+    "src/locales/lang"
+  ],
+  "i18n-ally.keystyle": "nested"
 }
