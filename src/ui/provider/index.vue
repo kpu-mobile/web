@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import useSettingsStore from '@/store/modules/settings'
 import { Locale } from 'vant'
 import enUS from 'vant/es/locale/lang/en-US'
 import zhCN from 'vant/es/locale/lang/zh-CN'

@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import Demo1 from './_demo1.vue'
+import Demo1Code from './_demo1.vue?raw'
+
 definePage({
   meta: {
     title: '卡片',
@@ -8,15 +11,8 @@ definePage({
 
 <template>
   <KmPageLayout navbar navbar-start-side="back">
-    <KmPageMain>
-      <div class="flex flex-col gap-4">
-        <KmCard v-for="i in 3" :key="i" title="卡片标题" description="卡片描述" class="w-full">
-          卡片内容
-          <template #footer>
-            卡片底部
-          </template>
-        </KmCard>
-      </div>
-    </KmPageMain>
+    <KmCodePreview :code="Demo1Code">
+      <Demo1 />
+    </KmCodePreview>
   </KmPageLayout>
 </template>

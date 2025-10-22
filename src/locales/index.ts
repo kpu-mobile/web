@@ -1,5 +1,4 @@
 import type { App } from 'vue'
-import useSettingsStore from '@/store/modules/settings.ts'
 import messages from '@intlify/unplugin-vue-i18n/messages'
 import { cloneDeep } from 'es-toolkit'
 import { createI18n } from 'vue-i18n'

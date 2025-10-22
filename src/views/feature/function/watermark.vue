@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import useSettingsStore from '@/store/modules/settings.ts'
-import useWatermarkStore from '@/store/modules/watermark.ts'
 import dayjs from '@/utils/dayjs.ts'
 
 definePage({

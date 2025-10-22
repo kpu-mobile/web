@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import useKeepAliveStore from '@/store/modules/keepAlive'
-import useSettingsStore from '@/store/modules/settings'
-import eventBus from '@/utils/eventBus'
 import dayjs from 'dayjs'
 import { useI18n } from 'vue-i18n'
+import eventBus from '@/utils/eventBus'
 import Provider from './ui/provider/index.vue'
 
 const route = useRoute()

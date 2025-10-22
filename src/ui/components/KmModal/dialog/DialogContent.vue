@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import type { DialogContentEmits, DialogContentProps } from 'reka-ui'
 import type { HTMLAttributes } from 'vue'
-import { cn } from '@/utils'
-import { useScrollLock } from '@vueuse/core'
+import { reactiveOmit, useScrollLock } from '@vueuse/core'
 import { Maximize, Minimize, X } from 'lucide-vue-next'
 import {
   DialogClose,
@@ -11,8 +10,10 @@ import {
   useForwardPropsEmits,
 } from 'reka-ui'
 import { computed } from 'vue'
+import { cn } from '@/utils'
 
 const props = defineProps<DialogContentProps & {
+  modalId: string
   class?: HTMLAttributes['class']
   open?: boolean
   maximize?: boolean
@@ -26,11 +27,7 @@ const emits = defineEmits<DialogContentEmits & {
   animationEnd: []
 }>()
 
-const delegatedProps = computed(() => {
-  const { class: _, ...delegated } = props
-
-  return delegated
-})
+const delegatedProps = reactiveOmit(props, 'class')
 
 const forwarded = useForwardPropsEmits(delegatedProps, emits)
 
@@ -38,7 +35,7 @@ function handleMaximize() {
   emits('toggleMaximize', !props.maximize)
 }
 
-const dialogContentRef = useTemplateRef('dialogContentRef')
+const dialogContentRef = useTemplateRef<ComponentPublicInstance<typeof DialogContent>>('dialogContentRef')
 
 defineExpose({
   el: dialogContentRef,
@@ -54,8 +51,6 @@ watch(showOverlay, (val) => {
     isLocked.value = false
   }
 })
-
-const id = inject('ModalId')
 </script>
 
 <template>
@@ -73,7 +68,7 @@ const id = inject('ModalId')
     >
       <div
         v-if="showOverlay"
-        :data-modal-id="id"
+        :data-modal-id="props.modalId"
         :class="cn('fixed inset-0 z-2000 data-[state=closed]:animate-out data-[state=open]:animate-in bg-black/50 data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0', {
           'backdrop-blur-sm': props.overlayBlur,
         })"

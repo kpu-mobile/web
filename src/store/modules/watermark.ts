@@ -1,9 +1,7 @@
 import type { WatermarkOptions } from 'watermark-js-plus'
 import { Watermark } from 'watermark-js-plus'
-import useSettingsStore from './settings'
-import useUserStore from './user'
 
-const useWatermarkStore = defineStore(
+export const useWatermarkStore = defineStore(
   // 唯一ID
   'watermark',
   () => {
@@ -70,5 +68,3 @@ const useWatermarkStore = defineStore(
     }
   },
 )
-
-export default useWatermarkStore

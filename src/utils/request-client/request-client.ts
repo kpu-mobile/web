@@ -2,10 +2,10 @@ import type { AxiosInstance, AxiosResponse } from 'axios'
 
 import type { RequestClientConfig, RequestClientOptions } from './types'
 
-import { bindMethods, isString, merge } from '@/utils'
-
 import axios from 'axios'
+
 import qs from 'qs'
+import { bindMethods, isString, merge } from '@/utils'
 import { FileDownloader } from './modules/downloader'
 import { InterceptorManager } from './modules/interceptor'
 import { FileUploader } from './modules/uploader'

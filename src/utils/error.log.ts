@@ -1,5 +1,4 @@
 import type { App } from 'vue'
-import useSettingsStore from '@/store/modules/settings'
 import dayjs from './dayjs'
 
 export default function errorLog(app: App) {

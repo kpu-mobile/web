@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { BaseProps as Props } from './index'
-import { cn } from '@/utils'
 import { computed } from 'vue'
+import { cn } from '@/utils'
 import {
   PATTERN_BACKGROUND_DIRECTION,
   PATTERN_BACKGROUND_SPEED,

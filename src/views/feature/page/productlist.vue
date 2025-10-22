@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import FaScrollArea from '@/ui/components/KmScrollArea/index.vue'
-
 const n = ref(0)
 const list = ref([{
   name: '为你推荐',
@@ -43,7 +41,7 @@ const list = ref([{
 
 <template>
   <KmPageLayout navbar navbar-start-side="back" :copyright="false">
-    <FaScrollArea
+    <KmScrollArea
       class="category-list w-[80px]"
       mask
       :scrollbar="false"
@@ -60,7 +58,7 @@ const list = ref([{
           {{ item.name }}
         </div>
       </div>
-    </FaScrollArea>
+    </KmScrollArea>
     <div class="product-list ms-[80px] flex flex-col gap-4 of-auto overscroll-none bg-background p-4">
       <div v-for="i in 20" :key="i" class="flex gap-2">
         <img

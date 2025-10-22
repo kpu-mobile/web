@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { getLocales, i18n } from '@/locales'
-import useSettingsStore from '@/store/modules/settings.ts'
-import dayjs from '@/utils/dayjs.ts'
 import { useI18n } from 'vue-i18n'
+import { getLocales, i18n } from '@/locales'
+import dayjs from '@/utils/dayjs.ts'
 
 definePage({
   meta: {

@@ -1,5 +1,3 @@
-import useSettingsStore from '@/store/modules/settings.ts'
-
 export default function usePage() {
   const route = useRoute()
   const router = useRouter()

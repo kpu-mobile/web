@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { cn } from '@/utils'
 import { useClipboard } from '@vueuse/core'
 import { useI18n } from 'vue-i18n'
+import { cn } from '@/utils'
 
 const props = withDefaults(defineProps<{
   code: string

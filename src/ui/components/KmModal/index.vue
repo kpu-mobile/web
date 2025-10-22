@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { ModalEmits, ModalProps } from '.'
-import { cn } from '@/utils'
 import { VisuallyHidden } from 'reka-ui'
+import { cn } from '@/utils'
 import {
   Dialog,
   DialogContent,
@@ -35,6 +35,7 @@ const props = withDefaults(
     footer: true,
     closeOnClickOverlay: true,
     closeOnPressEscape: true,
+    destroyOnClose: true,
   },
 )
 
@@ -53,34 +54,93 @@ defineExpose({
   areaRef: dialogAreaRef,
 })
 
-const id = useId()
-provide('ModalId', id)
-
+const modalId = useId()
 const isOpen = ref(props.modelValue)
 
 watch(() => props.modelValue, (newValue) => {
   isOpen.value = newValue
 })
 
-function updateOpen(value: boolean) {
-  isOpen.value = value
-  emits('update:modelValue', value)
-  if (value) {
+const hasOpened = ref(false)
+const isClosed = ref(true)
+
+watch(() => isOpen.value, (value) => {
+  isClosed.value = false
+  if (value && !hasOpened.value) {
+    hasOpened.value = true
+  }
+}, {
+  immediate: true,
+})
+
+const forceMount = computed(() => !props.destroyOnClose && hasOpened.value)
+
+watch(isOpen, (val) => {
+  emits('update:modelValue', val)
+  if (val) {
     emits('open')
   }
   else {
     emits('close')
   }
+})
+
+async function updateOpen(value: boolean) {
+  if (value) {
+    isOpen.value = value
+    emits('open')
+  }
+  else {
+    if (props.beforeClose) {
+      await props.beforeClose(
+        'close',
+        () => {
+          isOpen.value = value
+          emits('close')
+        },
+      )
+    }
+    else {
+      isOpen.value = value
+      emits('close')
+    }
+  }
 }
 
-function onConfirm() {
-  updateOpen(false)
-  emits('confirm')
+const isConfirmButtonLoading = ref(false)
+
+async function onConfirm() {
+  if (props.beforeClose) {
+    isConfirmButtonLoading.value = true
+    await props.beforeClose(
+      'confirm',
+      () => {
+        isOpen.value = false
+        emits('confirm')
+      },
+    )
+    isConfirmButtonLoading.value = false
+  }
+  else {
+    isOpen.value = false
+    emits('confirm')
+  }
 }
 
-function onCancel() {
-  updateOpen(false)
-  emits('cancel')
+async function onCancel() {
+  if (props.beforeClose) {
+    await props.beforeClose(
+      'cancel',
+      () => {
+        isOpen.value = false
+        emits('cancel')
+      },
+    )
+  }
+  else {
+    isOpen.value = false
+    emits('cancel')
+  }
 }
 
 function handleFocusOutside(e: Event) {
@@ -89,7 +149,7 @@ function handleFocusOutside(e: Event) {
 }
 
 function handleClickOutside(e: Event) {
-  if (!props.closeOnClickOverlay || (e.target as HTMLElement).dataset.modalId !== id) {
+  if (!props.closeOnClickOverlay || (e.target as HTMLElement).dataset.modalId !== modalId) {
     e.preventDefault()
     e.stopPropagation()
   }
@@ -108,6 +168,7 @@ function handleAnimationEnd() {
   }
   else {
     emits('closed')
+    isClosed.value = true
   }
 }
 </script>
@@ -115,11 +176,15 @@ function handleAnimationEnd() {
 <template>
   <Dialog :modal="false" :open="isOpen" @update:open="updateOpen">
     <DialogContent
+      :modal-id="modalId"
       :open="isOpen"
       :closable="props.closable"
       :overlay="props.overlay"
       :overlay-blur="props.overlayBlur"
-      :class="cn('left-0 right-0 top-1/2 flex flex-col p-0 gap-0 mx-auto h-[calc-size(auto,size)] w-[90vw] min-h-auto max-h-[90vh] translate-x-0 -translate-y-1/2', props.class)"
+      :force-mount="forceMount"
+      :class="cn('left-0 right-0 top-1/2 flex flex-col p-0 gap-0 mx-auto h-[calc-size(auto,size)] w-[90vw] min-h-auto max-h-[90vh] translate-x-0 -translate-y-1/2', props.class, {
+        hidden: isClosed,
+      })"
       @open-auto-focus="handleFocusOutside"
       @close-auto-focus="handleFocusOutside"
       @focus-outside="handleFocusOutside"
@@ -176,7 +241,7 @@ function handleAnimationEnd() {
           <KmButton v-if="showCancelButton" variant="outline" class="w-full" @click="onCancel">
             {{ cancelButtonText }}
           </KmButton>
-          <KmButton v-if="showConfirmButton" :disabled="confirmButtonDisabled" :loading="confirmButtonLoading" class="w-full" @click="onConfirm">
+          <KmButton v-if="showConfirmButton" :disabled="confirmButtonDisabled" :loading="confirmButtonLoading || isConfirmButtonLoading" class="w-full" @click="onConfirm">
             {{ confirmButtonText }}
           </KmButton>
         </slot>

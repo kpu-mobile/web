@@ -1,17 +1,18 @@
 <script setup lang="ts">
+import Demo1 from './_demo1.vue'
+import Demo1Code from './_demo1.vue?raw'
+
 definePage({
   meta: {
     title: '输入框',
   },
 })
-
-const value = ref('')
 </script>
 
 <template>
   <KmPageLayout navbar navbar-start-side="back">
-    <KmPageMain>
-      <KmInput v-model="value" placeholder="请输入内容" />
-    </KmPageMain>
+    <KmCodePreview :code="Demo1Code">
+      <Demo1 />
+    </KmCodePreview>
   </KmPageLayout>
 </template>

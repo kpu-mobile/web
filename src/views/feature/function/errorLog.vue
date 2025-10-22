@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import useSettingsStore from '@/store/modules/settings.ts'
-
 definePage({
   meta: {
     title: 'pages.function.errorLog',

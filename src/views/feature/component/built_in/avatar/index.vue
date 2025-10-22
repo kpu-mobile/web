@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import Demo1 from './_demo1.vue'
+import Demo1Code from './_demo1.vue?raw'
+
 definePage({
   meta: {
     title: '头像',
@@ -8,12 +11,8 @@ definePage({
 
 <template>
   <KmPageLayout navbar navbar-start-side="back">
-    <KmPageMain>
-      <div class="flex gap-4">
-        <KmAvatar src="https://kpu-mobile.kpui.top/logo.png" />
-        <KmAvatar src="https://kpu-mobile.kpui.top/logo.png" shape="square" />
-        <KmAvatar src="" fallback="Hooray" />
-      </div>
-    </KmPageMain>
+    <KmCodePreview :code="Demo1Code">
+      <Demo1 />
+    </KmCodePreview>
   </KmPageLayout>
 </template>

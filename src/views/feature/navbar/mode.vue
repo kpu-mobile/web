@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import FaTabs from '@/ui/components/KmTabs/index.vue'
-
 definePage({
   meta: {
     title: 'pages.navbar.mode',
@@ -14,7 +12,7 @@ const mode = ref<'fixed' | 'static' | 'show-hide-fixed' | 'sticky'>('fixed')
 <template>
   <KmPageLayout navbar :navbar-mode="mode">
     <div class="flex flex-col gap-4 p-4">
-      <FaTabs
+      <KmTabs
         v-model="mode" :list="[
           {
             label: '静止',

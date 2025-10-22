@@ -19,6 +19,7 @@ import banner from 'vite-plugin-banner'
 import { compression } from 'vite-plugin-compression2'
 import { envParse, parseLoadedEnv } from 'vite-plugin-env-parse'
 import { vitePluginFakeServer } from 'vite-plugin-fake-server'
+import { qrcode } from 'vite-plugin-qrcode'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import VueDevTools from 'vite-plugin-vue-devtools'
 
@@ -36,6 +37,7 @@ export default function createVitePlugins(mode: string, isBuild = false) {
       renderLegacyChunks: false,
       modernPolyfills: [
         'es.array.at',
+        'es.object.has-own',
       ],
     }),
 
@@ -51,6 +53,9 @@ export default function createVitePlugins(mode: string, isBuild = false) {
       dtsPath: 'src/types/env.d.ts',
     }),
 
+    // https://github.com/svitejs/vite-plugin-qrcode
+    qrcode(),
+
     // https://github.com/unplugin/unplugin-auto-import
     autoImport({
       imports: [
@@ -63,7 +68,8 @@ export default function createVitePlugins(mode: string, isBuild = false) {
       ],
       dts: './src/types/auto-imports.d.ts',
       dirs: [
-        './src/utils/composables/**',
+        './src/store/modules',
+        './src/utils/composables',
       ],
     }),
 
@@ -94,10 +100,12 @@ export default function createVitePlugins(mode: string, isBuild = false) {
     }),
 
     // https://github.com/nonzzz/vite-plugin-compression
-    viteEnv.VITE_BUILD_COMPRESS?.split(',').includes('gzip') && compression(),
-    viteEnv.VITE_BUILD_COMPRESS?.split(',').includes('brotli') && compression({
+    viteEnv.VITE_BUILD_COMPRESS && compression({
       exclude: [/\.(br)$/, /\.(gz)$/],
-      algorithm: 'brotliCompress',
+      algorithms: viteEnv.VITE_BUILD_COMPRESS.split(',').map((item: string) => ({
+        gzip: 'gzip',
+        brotli: 'brotliCompress',
+      }[item])),
     }),
 
     viteEnv.VITE_BUILD_ARCHIVE && Archiver({

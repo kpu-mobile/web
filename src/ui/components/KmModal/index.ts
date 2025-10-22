@@ -22,10 +22,15 @@ export interface ModalProps {
   cancelButtonText?: string
   confirmButtonDisabled?: boolean
   confirmButtonLoading?: boolean
+  beforeClose?: (
+    action: 'confirm' | 'cancel' | 'close',
+    done: () => void,
+  ) => void
   header?: boolean
   footer?: boolean
   closeOnClickOverlay?: boolean
   closeOnPressEscape?: boolean
+  destroyOnClose?: boolean
   class?: HTMLAttributes['class']
   headerClass?: HTMLAttributes['class']
   contentClass?: HTMLAttributes['class']
@@ -43,13 +48,13 @@ export interface ModalEmits {
 
 type alertOptions = Pick<ModalProps, 'title' | 'description' | 'icon' | 'alignCenter' | 'overlay' | 'overlayBlur' | 'confirmButtonText' | 'confirmButtonDisabled' | 'confirmButtonLoading' | 'closeOnClickOverlay' | 'closeOnPressEscape' | 'class' | 'headerClass' | 'contentClass' | 'footerClass'> & {
   content: string
-  onConfirm?: () => any
+  onConfirm?: () => void
 }
 
-type confirmOptions = Pick<ModalProps, 'title' | 'description' | 'alignCenter' | 'overlay' | 'overlayBlur' | 'confirmButtonText' | 'cancelButtonText' | 'confirmButtonDisabled' | 'confirmButtonLoading' | 'closeOnClickOverlay' | 'closeOnPressEscape' | 'class' | 'headerClass' | 'contentClass' | 'footerClass'> & {
+type confirmOptions = Pick<ModalProps, 'title' | 'description' | 'alignCenter' | 'overlay' | 'overlayBlur' | 'confirmButtonText' | 'cancelButtonText' | 'confirmButtonDisabled' | 'confirmButtonLoading' | 'beforeClose' | 'closeOnClickOverlay' | 'closeOnPressEscape' | 'class' | 'headerClass' | 'contentClass' | 'footerClass'> & {
   content: string
-  onConfirm?: () => any
-  onCancel?: () => any
+  onConfirm?: () => void
+  onCancel?: () => void
 }
 
 export function useKmModal() {

@@ -3,16 +3,14 @@
  */
 import type { RequestClientOptions } from '@/utils/request-client'
 
-import useSettingsStore from '@/store/modules/settings.ts'
-import useUserStore from '@/store/modules/user'
+import { toast } from 'vue-sonner'
+
 import {
   authenticateResponseInterceptor,
   defaultResponseInterceptor,
   errorMessageResponseInterceptor,
   RequestClient,
 } from '@/utils/request-client'
-
-import { toast } from 'vue-sonner'
 import { refreshTokenApi } from './modules/user'
 
 const apiURL = (import.meta.env.DEV && import.meta.env.VITE_OPEN_PROXY) ? '/proxy/' : import.meta.env.VITE_APP_API_BASEURL

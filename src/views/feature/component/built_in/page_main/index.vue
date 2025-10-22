@@ -1,4 +1,13 @@
 <script setup lang="ts">
+import Demo1 from './_demo1.vue'
+import Demo1Code from './_demo1.vue?raw'
+import Demo2 from './_demo2.vue'
+import Demo2Code from './_demo2.vue?raw'
+import Demo3 from './_demo3.vue'
+import Demo3Code from './_demo3.vue?raw'
+import Demo4 from './_demo4.vue'
+import Demo4Code from './_demo4.vue?raw'
+
 definePage({
   meta: {
     title: '内容块',
@@ -8,30 +17,17 @@ definePage({
 
 <template>
   <KmPageLayout navbar navbar-start-side="back">
-    <div>
-      <KmPageMain>
-        PageMain 是最常用的页面组件，几乎所有页面都会使用到
-      </KmPageMain>
-      <KmPageMain title="你可以设置一个自定义的标题">
-        这里放页面内容
-      </KmPageMain>
-      <KmPageMain>
-        <template #title>
-          <div class="flex items-center justify-between">
-            通过 slot 设置标题
-            <KmButton size="sm" variant="outline">
-              自定义按钮
-            </KmButton>
-          </div>
-        </template>
-        这里放页面内容
-      </KmPageMain>
-      <KmPageMain title="带展开/收起功能" collaspe height="20vh">
-        <h1 class="text-2xl font-bold">
-          Kpu-mobile
-        </h1>
-        <img src="@/assets/images/logo.png" class="w-40">
-      </KmPageMain>
-    </div>
+    <KmCodePreview :code="Demo1Code">
+      <Demo1 />
+    </KmCodePreview>
+    <KmCodePreview :code="Demo2Code">
+      <Demo2 />
+    </KmCodePreview>
+    <KmCodePreview :code="Demo3Code">
+      <Demo3 />
+    </KmCodePreview>
+    <KmCodePreview :code="Demo4Code">
+      <Demo4 />
+    </KmCodePreview>
   </KmPageLayout>
 </template>

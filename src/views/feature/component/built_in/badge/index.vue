@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import Demo1 from './_demo1.vue'
+import Demo1Code from './_demo1.vue?raw'
+
 definePage({
   meta: {
     title: '徽章',
@@ -8,24 +11,8 @@ definePage({
 
 <template>
   <KmPageLayout navbar navbar-start-side="back">
-    <KmPageMain>
-      <div class="flex gap-8">
-        <KmBadge :value="true">
-          <KmIcon name="i-ri:notification-3-line" />
-        </KmBadge>
-        <KmBadge :value="99">
-          <KmIcon name="i-ri:notification-3-line" />
-        </KmBadge>
-        <KmBadge value="噢">
-          <KmIcon name="i-ri:notification-3-line" />
-        </KmBadge>
-        <KmBadge value="9" variant="secondary">
-          <KmIcon name="i-ri:notification-3-line" />
-        </KmBadge>
-        <KmBadge value="9" variant="destructive">
-          <KmIcon name="i-ri:notification-3-line" />
-        </KmBadge>
-      </div>
-    </KmPageMain>
+    <KmCodePreview :code="Demo1Code">
+      <Demo1 />
+    </KmCodePreview>
   </KmPageLayout>
 </template>

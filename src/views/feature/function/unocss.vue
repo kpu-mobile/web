@@ -7,7 +7,7 @@ definePage({
 </script>
 
 <template>
-  <KmPageLayout navbar>
+  <KmPageLayout navbar navbar-start-side="back">
     <div flex flex-1 flex-col select-none text-center all:transition-400>
       <div ma>
         <div animate-bounce-alt animate-duration-1s animate-count-infinite text-5xl fw100>

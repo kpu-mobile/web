@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import useSettingsStore from '@/store/modules/settings'
-import useUserStore from '@/store/modules/user'
 import { showNotify } from 'vant'
 
 definePage({

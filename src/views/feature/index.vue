@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { RouteNamedMap } from 'vue-router/auto-routes'
+import { useI18n } from 'vue-i18n'
 import { $t } from '@/locales'
 import { cn } from '@/utils'
-import { useI18n } from 'vue-i18n'
 
 defineOptions({
   name: 'Feature',
@@ -268,6 +268,11 @@ const data: {
       {
         path: '/feature/component/built_in/modal/',
         title: '弹窗',
+      },
+      {
+        path: '/feature/component/built_in/multi_step_loader/',
+        title: '多步骤加载器',
+        pro: true,
       },
       {
         path: '/feature/component/built_in/page_main/',

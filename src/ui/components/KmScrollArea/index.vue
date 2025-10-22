@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-import { cn } from '@/utils'
 import { useElementSize, useScroll } from '@vueuse/core'
+import { cn } from '@/utils'
 import { ScrollArea, ScrollBar } from './scroll-area'
 
 defineOptions({
-  name: 'FaScrollArea',
+  name: 'KmScrollArea',
 })
 
 const props = withDefaults(
@@ -58,11 +58,6 @@ function onWheel(event: WheelEvent) {
   if (props.horizontal) {
     scrollAreaRef.value?.el?.viewportElement?.scrollBy({
       left: event.deltaY || event.detail,
-    })
-  }
-  else {
-    scrollAreaRef.value?.el?.viewportElement?.scrollBy({
-      top: event.deltaY || event.detail,
     })
   }
 }

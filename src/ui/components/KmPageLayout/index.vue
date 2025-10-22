@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import type { navbarSideOptions } from '#/global'
 import type { HTMLAttributes } from 'vue'
-import useSettingsStore from '@/store/modules/settings'
-import HeaderSide from '@/ui/HeaderSide/index.vue'
-import { cn } from '@/utils'
 import { useElementSize, useScroll } from '@vueuse/core'
 import { useI18n } from 'vue-i18n'
+import HeaderSide from '@/ui/HeaderSide/index.vue'
+import { cn } from '@/utils'
 
 defineOptions({
   name: 'KmPageLayout',
@@ -45,6 +44,8 @@ const props = withDefaults(
     tabbarMask?: boolean
     /** 标签栏样式 */
     tabbarClass?: HTMLAttributes['class']
+    /** 内容区域样式 */
+    contentClass?: HTMLAttributes['class']
     /** 是否展示底部版权信息，默认使用应用配置 `copyright.enable` */
     copyright?: boolean
     /** 是否启用返回顶部按钮，默认使用应用配置 `app.enableBackTop` */
@@ -106,6 +107,7 @@ function handleMainScroll(e: Event) {
 const startSideRef = useTemplateRef('startSideRef')
 const endSideRef = useTemplateRef('endSideRef')
 const sideWidth = ref(0)
+const isSupprotRound = CSS.supports('width', 'round(up, 1.01px, 1px)')
 onMounted(() => {
   const { width: startWidth } = useElementSize(startSideRef, undefined, { box: 'border-box' })
   const { width: endWidth } = useElementSize(endSideRef, undefined, { box: 'border-box' })
@@ -217,7 +219,7 @@ onBeforeRouteLeave((_to, _from, next) => {
       <div class="min-h-[var(--g-navbar-min-height)] w-full flex-center">
         <div
           class="h-full flex items-center justify-start" :style="{
-            ...(titleCenter && sideWidth && { width: `round(up, ${sideWidth}px, 1px)` }),
+            ...(titleCenter && sideWidth && { width: isSupprotRound ? `round(up, ${sideWidth}px, 1px)` : `${Math.ceil(sideWidth)}px` }),
           }"
         >
           <div ref="startSideRef" class="h-full flex-center whitespace-nowrap">
@@ -242,7 +244,7 @@ onBeforeRouteLeave((_to, _from, next) => {
         </div>
         <div
           class="h-full flex items-center justify-end" :style="{
-            ...(titleCenter && sideWidth && { width: `round(up, ${sideWidth}px, 1px)` }),
+            ...(titleCenter && sideWidth && { width: isSupprotRound ? `round(up, ${sideWidth}px, 1px)` : `${Math.ceil(sideWidth)}px` }),
           }"
         >
           <div ref="endSideRef" class="h-full flex-center whitespace-nowrap">
@@ -273,7 +275,7 @@ onBeforeRouteLeave((_to, _from, next) => {
           'mb-safe': (tabbarMode ?? settingsStore.settings.tabbar.mode) === 'sticky',
           'mb+safe-[var(--g-tabbar-height)]': (tabbarMode ?? settingsStore.settings.tabbar.mode) === 'fixed',
         }),
-      })"
+      }, contentClass)"
     >
       <slot />
       <!-- 版权信息 -->

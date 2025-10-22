@@ -1,8 +1,8 @@
 import type { RequestClient } from './request-client'
 import type { MakeErrorMessageFn, ResponseInterceptorConfig } from './types'
+import axios from 'axios'
 import { $t } from '@/locales'
 import { isFunction } from '@/utils'
-import axios from 'axios'
 
 export function defaultResponseInterceptor({
   codeField = 'code',

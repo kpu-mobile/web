@@ -1,4 +1,4 @@
-const useTabbarBadgeStore = defineStore(
+export const useTabbarBadgeStore = defineStore(
   // 唯一ID
   'tabbarBadge',
   () => {
@@ -30,4 +30,3 @@ const useTabbarBadgeStore = defineStore(
     }
   },
 )
-export default useTabbarBadgeStore

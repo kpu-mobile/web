@@ -1,9 +1,8 @@
 import type { RecursiveRequired, Settings } from '#/global'
+import { cloneDeep } from 'es-toolkit'
 import settingsDefault from '@/settings.default'
 import pinia from '@/store'
-import useTabbarBadgeStore from '@/store/modules/tabbarBadge.ts'
 import { merge } from '@/utils/object'
-import { cloneDeep } from 'es-toolkit'
 
 const tabbarBadge = useTabbarBadgeStore(pinia)
 const globalSettings: Settings.all = {

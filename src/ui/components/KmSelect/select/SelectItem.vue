@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { SelectItemProps } from 'reka-ui'
 import type { HTMLAttributes } from 'vue'
-import { cn } from '@/utils'
+import { reactiveOmit } from '@vueuse/core'
 import { Check } from 'lucide-vue-next'
 import {
   SelectItem,
@@ -9,15 +9,11 @@ import {
   SelectItemText,
   useForwardProps,
 } from 'reka-ui'
-import { computed } from 'vue'
+import { cn } from '@/utils'
 
 const props = defineProps<SelectItemProps & { class?: HTMLAttributes['class'] }>()
 
-const delegatedProps = computed(() => {
-  const { class: _, ...delegated } = props
-
-  return delegated
-})
+const delegatedProps = reactiveOmit(props, 'class')
 
 const forwardedProps = useForwardProps(delegatedProps)
 </script>

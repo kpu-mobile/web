@@ -1,24 +1,18 @@
 <script setup lang="ts">
+import Demo1 from './_demo1.vue'
+import Demo1Code from './_demo1.vue?raw'
+
 definePage({
   meta: {
     title: '选择器',
   },
 })
-
-const select = ref('1')
 </script>
 
 <template>
   <KmPageLayout navbar navbar-start-side="back">
-    <KmPageMain>
-      <KmSelect
-        v-model="select"
-        :options="[
-          { label: '选项1', value: '1' },
-          { label: '选项2', value: '2', disabled: true },
-          { label: '选项3', value: '3' },
-        ]"
-      />
-    </KmPageMain>
+    <KmCodePreview :code="Demo1Code">
+      <Demo1 />
+    </KmCodePreview>
   </KmPageLayout>
 </template>

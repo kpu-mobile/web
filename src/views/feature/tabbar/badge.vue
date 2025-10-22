@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import useTabbarBadgeStore from '@/store/modules/tabbarBadge.ts'
-
 definePage({
   meta: {
     title: 'pages.tabbar.badge',

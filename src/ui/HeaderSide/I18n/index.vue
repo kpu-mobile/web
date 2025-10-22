@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { localesName } from '@/locales'
-import useSettingsStore from '@/store/modules/settings.ts'
 
 const settingsStore = useSettingsStore()
 const d = ref(!1)

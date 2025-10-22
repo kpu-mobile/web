@@ -2,8 +2,7 @@
 import type { DialogContentEmits, DialogContentProps } from 'reka-ui'
 import type { HTMLAttributes } from 'vue'
 import type { SheetVariants } from '.'
-import { cn } from '@/utils'
-import { useScrollLock } from '@vueuse/core'
+import { reactiveOmit, useScrollLock } from '@vueuse/core'
 import { X } from 'lucide-vue-next'
 import {
   DialogClose,
@@ -12,6 +11,7 @@ import {
   useForwardPropsEmits,
 } from 'reka-ui'
 import { computed } from 'vue'
+import { cn } from '@/utils'
 import { sheetVariants } from '.'
 
 interface SheetContentProps extends DialogContentProps {
@@ -33,11 +33,7 @@ const emits = defineEmits<DialogContentEmits & {
   animationEnd: []
 }>()
 
-const delegatedProps = computed(() => {
-  const { class: _, side, ...delegated } = props
-
-  return delegated
-})
+const delegatedProps = reactiveOmit(props, 'class', 'side')
 
 const forwarded = useForwardPropsEmits(delegatedProps, emits)
 

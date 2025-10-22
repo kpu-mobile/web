@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { Ref } from 'vue'
-import { cn } from '@/utils'
 import { Motion, useAnimate } from 'motion-v'
+import { cn } from '@/utils'
 
 const props = withDefaults(defineProps<Props>(), {
   gradientColors: () => ['#A97CF8', '#F38CB8', '#FDCC92'],

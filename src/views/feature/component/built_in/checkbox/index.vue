@@ -1,22 +1,18 @@
 <script setup lang="ts">
+import Demo1 from './_demo1.vue'
+import Demo1Code from './_demo1.vue?raw'
+
 definePage({
   meta: {
     title: '复选框',
   },
 })
-
-const checked = ref(false)
 </script>
 
 <template>
   <KmPageLayout navbar navbar-start-side="back">
-    <KmPageMain>
-      <div class="flex gap-4">
-        <KmCheckbox v-model="checked">
-          复选框
-        </KmCheckbox>
-        {{ checked }}
-      </div>
-    </KmPageMain>
+    <KmCodePreview :code="Demo1Code">
+      <Demo1 />
+    </KmCodePreview>
   </KmPageLayout>
 </template>

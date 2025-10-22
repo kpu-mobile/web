@@ -3,7 +3,7 @@ import type { RouteLocationNormalized } from 'vue-router'
 import { getLocales } from '@/locales'
 import settingsDefault from '@/settings'
 
-const useSettingsStore = defineStore(
+export const useSettingsStore = defineStore(
   // 唯一ID
   'settings',
   () => {
@@ -21,7 +21,7 @@ const useSettingsStore = defineStore(
     }, {
       immediate: true,
     })
-    watch(() => settings.value.app.colorScheme, updateTheme, {
+    watch([() => settings.value.app.colorScheme, () => settings.value.app.lightTheme, () => settings.value.app.darkTheme, () => settings.value.app.themeSync], updateTheme, {
       immediate: true,
     })
     function updateTheme() {
@@ -33,9 +33,9 @@ const useSettingsStore = defineStore(
       switch (colorScheme) {
         case 'light':
           document.documentElement.classList.remove('dark')
-          document.body.setAttribute('data-theme', settings.value.app.darkTheme)
+          document.body.setAttribute('data-theme', settings.value.app.lightTheme)
           if (settings.value.app.themeSync) {
-            settings.value.app.lightTheme = settings.value.app.darkTheme
+            settings.value.app.darkTheme = settings.value.app.lightTheme
           }
           break
         case 'dark':
@@ -134,5 +134,3 @@ const useSettingsStore = defineStore(
     }
   },
 )
-
-export default useSettingsStore

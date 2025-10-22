@@ -1,4 +1,11 @@
 <script setup lang="ts">
+import Demo1 from './_demo1.vue'
+import Demo1Code from './_demo1.vue?raw'
+import Demo2 from './_demo2.vue'
+import Demo2Code from './_demo2.vue?raw'
+import Demo3 from './_demo3.vue'
+import Demo3Code from './_demo3.vue?raw'
+
 definePage({
   meta: {
     title: '趋势符号',
@@ -8,25 +15,28 @@ definePage({
 
 <template>
   <KmPageLayout navbar navbar-start-side="back">
-    <div>
-      <KmPageMain>
-        <div class="flex flex-col gap-2">
-          <KmTrend value="12.3" />
-          <KmTrend value="12.3" type="down" />
-        </div>
-      </KmPageMain>
-      <KmPageMain title="颜色反转">
-        <div class="flex flex-col gap-2">
-          <KmTrend value="12.3" reverse />
-          <KmTrend value="12.3" type="down" reverse />
-        </div>
-      </KmPageMain>
-      <KmPageMain title="前缀后缀">
-        <div class="flex flex-col gap-2">
-          <KmTrend value="12.3" prefix="$" />
-          <KmTrend value="12.3" suffix="%" />
-        </div>
-      </KmPageMain>
-    </div>
+    <KmCodePreview
+      :code="Demo1Code"
+    >
+      <template #default>
+        <Demo1 />
+      </template>
+    </KmCodePreview>
+    <KmCodePreview
+      title="颜色反转"
+      :code="Demo2Code"
+    >
+      <template #default>
+        <Demo2 />
+      </template>
+    </KmCodePreview>
+    <KmCodePreview
+      title="前缀后缀"
+      :code="Demo3Code"
+    >
+      <template #default>
+        <Demo3 />
+      </template>
+    </KmCodePreview>
   </KmPageLayout>
 </template>
