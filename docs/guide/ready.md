@@ -23,8 +23,6 @@ git clone https://gitee.com/kpu-mobile/web.git
 
 专业版用户会被邀请加入到 [Kpu-mobile](https://github.com/kpu-mobile) Github 官方组织，加入组织后在专业版仓库 [Releases](https://github.com/kpu-mobile/pro/releases) 页面下载最新版本的压缩包。
 
-购买专业版点[这里](../buy)。
-
 ## 开发环境
 
 使用本模板前，需要在本地依次安装好 [Node.js](https://nodejs.org/), [pnpm](https://pnpm.io/zh/), [Git](https://git-scm.com/)(非必须) 和 [Visual Studio Code](https://code.visualstudio.com/)。
