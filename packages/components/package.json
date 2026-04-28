@@ -1,0 +1,50 @@
+{
+  "name": "@kpu-mobile/components",
+  "type": "module",
+  "version": "0.0.0",
+  "exports": {
+    ".": "./index.ts",
+    "./resolver": {
+      "types": "./resolver.ts",
+      "import": "./dist/resolver.mjs"
+    }
+  },
+  "scripts": {
+    "stub": "pnpm unbuild --stub"
+  },
+  "peerDependencies": {
+    "@vueuse/components": "catalog:",
+    "@vueuse/core": "catalog:",
+    "unplugin-auto-import": "catalog:",
+    "unplugin-vue-components": "catalog:",
+    "vite": "catalog:",
+    "vue": "catalog:",
+    "vue-router": "catalog:"
+  },
+  "peerDependenciesMeta": {
+    "unplugin-auto-import": {
+      "optional": true
+    },
+    "unplugin-vue-components": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "@iconify/vue": "catalog:",
+    "@number-flow/vue": "catalog:",
+    "class-variance-authority": "catalog:",
+    "clsx": "catalog:",
+    "es-toolkit": "catalog:",
+    "lucide-vue-next": "catalog:",
+    "motion-v": "catalog:",
+    "qrcode": "catalog:",
+    "reka-ui": "catalog:",
+    "spinkit": "catalog:",
+    "tailwind-merge": "catalog:",
+    "vaul-vue": "catalog:",
+    "vue-sonner": "catalog:"
+  },
+  "devDependencies": {
+    "@types/qrcode": "catalog:"
+  }
+}

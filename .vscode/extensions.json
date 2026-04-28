@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "EditorConfig.EditorConfig",
+    "mikestead.dotenv",
+    "dbaeumer.vscode-eslint",
+    "stylelint.vscode-stylelint",
+    "Vue.volar",
+    "antfu.unocss",
+    // i18n 插件
+    "Lokalise.i18n-ally"
+  ]
+}

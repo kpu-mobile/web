@@ -1,0 +1,21 @@
+{
+  "name": "@fantastic-mobil/docs",
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress dev .",
+    "build": "vitepress build .",
+    "lint:eslint": "eslint . --cache --fix"
+  },
+  "dependencies": {
+    "markdown-it-task-lists": "catalog:",
+    "medium-zoom": "catalog:",
+    "unocss": "catalog:",
+    "vitepress-plugin-comment-with-giscus": "catalog:"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "catalog:",
+    "eslint": "catalog:",
+    "vitepress": "catalog:",
+    "vue": "catalog:"
+  }
+}

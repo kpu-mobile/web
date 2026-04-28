@@ -1,0 +1,25 @@
+<script setup lang="ts">
+definePage({
+  meta: {
+    title: 'pages.navbar.custom-title',
+  },
+})
+
+const router = useRouter()
+</script>
+
+<template>
+  <AppPageLayout :title-center="false" navbar>
+    <template #navbar>
+      这是一段自定义的标题这是一段自定义的标题这是一段自定义的标题
+    </template>
+    <div class="p-4 flex flex-col gap-4">
+      <div>
+        注意，这种方式只能自定义 Navbar 区域的标题，并不会影响网页标题。如需同时修改网页标题，请参考动态标题。
+      </div>
+      <KmButton @click="router.back()">
+        返回
+      </KmButton>
+    </div>
+  </AppPageLayout>
+</template>
