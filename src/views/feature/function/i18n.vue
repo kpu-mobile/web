@@ -10,9 +10,9 @@ definePage({
 })
 
 const { t } = useI18n()
-const settingsStore = useSettingsStore()
+const appSettingsStore = useAppSettingsStore()
 const r = ref('')
-watch(() => settingsStore.lang, () => {
+watch(() => appSettingsStore.lang, () => {
   r.value = dayjs().format('MMMM-dddd')
 }, {
   immediate: true,
@@ -42,7 +42,7 @@ function i(lang: string) {
 
 <template>
   <KmPageLayout navbar navbar-start-side="back" navbar-end-side="i18n">
-    <div class="m-4 c-gray">
+    <div class="c-gray m-4">
       Vant 组件国际化
     </div>
     <KmPageMain class="my-0">
@@ -52,17 +52,17 @@ function i(lang: string) {
         style="height: 500px;"
       />
     </KmPageMain>
-    <div class="m-4 c-gray">
+    <div class="c-gray m-4">
       Dayjs
     </div>
     <KmPageMain class="my-0">
       {{ r }}
     </KmPageMain>
-    <div class="m-4 c-gray">
+    <div class="c-gray m-4">
       延迟加载
     </div>
     <KmPageMain class="my-0">
-      <div class="flex justify-center gap-4">
+      <div class="flex gap-4 justify-center">
         <KmButton @click="i('zh-cn')">
           载入中文
         </KmButton>

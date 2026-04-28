@@ -8,7 +8,7 @@ const direction = ref<'top' | 'bottom' | 'left' | 'right' | 'top-left' | 'top-ri
 
 <template>
   <div class="flex flex-col gap-2">
-    <div class="flex items-center gap-2">
+    <div class="flex gap-2 items-center">
       <span>图案</span>
       <KmSelect
         v-model="variant" :options="[
@@ -18,7 +18,7 @@ const direction = ref<'top' | 'bottom' | 'left' | 'right' | 'top-left' | 'top-ri
         ]"
       />
     </div>
-    <div class="flex items-center gap-2">
+    <div class="flex gap-2 items-center">
       <span>尺寸</span>
       <KmSelect
         v-model="size" :options="[
@@ -29,11 +29,11 @@ const direction = ref<'top' | 'bottom' | 'left' | 'right' | 'top-left' | 'top-ri
         ]"
       />
     </div>
-    <div class="flex items-center gap-2">
+    <div class="flex gap-2 items-center">
       <span>动画</span>
       <KmSwitch v-model="animate" />
     </div>
-    <div class="flex items-center gap-2">
+    <div class="flex gap-2 items-center">
       <span>方向</span>
       <KmSelect
         v-model="direction" :options="[
@@ -48,7 +48,7 @@ const direction = ref<'top' | 'bottom' | 'left' | 'right' | 'top-left' | 'top-ri
         ]"
       />
     </div>
-    <div class="flex items-center gap-2">
+    <div class="flex gap-2 items-center">
       <span>遮罩</span>
       <KmSelect
         v-model="mask" :options="[

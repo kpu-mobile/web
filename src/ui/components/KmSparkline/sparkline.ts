@@ -106,11 +106,11 @@ export function sparkline(svg: any, entries: any, options: any) {
     const x = index * offset + spotDiameter
     const y = getY(max, height, strokeWidth + spotRadius, value)
 
-    datapoints.push(Object.assign({}, entries[index], {
+    datapoints.push({ ...entries[index], ...{
       index,
       x,
       y,
-    }))
+    } })
 
     pathCoords += ` L ${x} ${y}`
   })

@@ -189,7 +189,7 @@ onUnmounted(() => {
       ref="canvasRef"
       :width="width"
       :height="height"
-      class="absolute left-0 top-0"
+      class="left-0 top-0 absolute"
       @mousedown="handleMouseDown"
       @touchstart="handleTouchStart"
     />

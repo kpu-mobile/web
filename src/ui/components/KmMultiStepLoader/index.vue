@@ -96,27 +96,27 @@ watch(() => props.loading, (val) => {
     leave-from-class="opacity-100"
     leave-to-class="opacity-0"
   >
-    <div v-if="loading && steps.length > 0" class="fixed inset-0 z-5000 size-full flex items-center justify-center backdrop-blur-2xl">
+    <div v-if="loading && steps.length > 0" class="flex size-full items-center inset-0 justify-center fixed z-5000 backdrop-blur-2xl">
       <button
         v-show="!preventClose"
-        class="absolute right-4 top-4 z-5001 h-9 inline-flex items-center justify-center whitespace-nowrap rounded-md bg-primary px-3 text-sm text-primary-foreground font-medium ring-offset-background transition-colors disabled:pointer-events-none hover:bg-primary/90 disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-ring"
+        class="text-sm text-primary-foreground font-medium px-3 rounded-md bg-primary inline-flex h-9 whitespace-nowrap ring-offset-background transition-colors items-center right-4 top-4 justify-center absolute z-5001 focus-visible:outline-none hover:bg-primary/90 disabled:opacity-50 disabled:pointer-events-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         size="sm"
         @click="handleClose"
       >
         <KmIcon name="i-heroicons:x-mark" class="size-6" />
       </button>
-      <div class="relative h-96">
-        <div class="relative mx-auto mt-40 max-w-xl flex flex-col justify-start">
+      <div class="h-96 relative">
+        <div class="mx-auto mt-40 flex flex-col max-w-xl justify-start relative">
           <div v-for="(step, index) in steps" :key="index">
             <div
-              class="mb-4 flex items-center gap-2 text-left transition-all duration-300 ease-in-out" :style="{
+              class="mb-4 text-left flex gap-2 transition-all duration-300 ease-in-out items-center" :style="{
                 opacity: index === currentStepIndex ? 1 : Math.max(1 - Math.abs(index - currentStepIndex) * .2, 0),
                 transform: `translateY(${index === currentStepIndex ? -(currentStepIndex * 40) : -(currentStepIndex * 40)}px})` }"
             >
-              <KmIcon v-if="index < currentStepIndex || index === props.steps.length - 1 && index === currentStepIndex && isCompleted" name="i-heroicons:check-circle-solid" class="size-6 text-primary" />
+              <KmIcon v-if="index < currentStepIndex || index === props.steps.length - 1 && index === currentStepIndex && isCompleted" name="i-heroicons:check-circle-solid" class="text-primary size-6" />
 
-              <KmIcon v-else-if="index === currentStepIndex || (!isCompleted || index !== props.steps.length - 1)" name="i-heroicons:arrow-path" class="size-6 animate-spin text-primary" />
-              <KmIcon v-else name="i-heroicons:check-circle" class="size-6 text-black opacity-50 dark:text-white" />
+              <KmIcon v-else-if="index === currentStepIndex || (!isCompleted || index !== props.steps.length - 1)" name="i-heroicons:arrow-path" class="text-primary size-6 animate-spin" />
+              <KmIcon v-else name="i-heroicons:check-circle" class="text-black opacity-50 size-6 dark:text-white" />
               <div class="flex flex-col">
                 <span class="text-lg text-black dark:text-white" :class=" index === currentStepIndex && 'opacity-50'">{{ step.text }}</span>
                 <Transition
@@ -133,7 +133,7 @@ watch(() => props.loading, (val) => {
           </div>
         </div>
       </div>
-      <div class="[mask-image:radial-gradient(900px_at_center,hsl(var(--primary))_30%,transparent)] absolute inset-x-0 bottom-0 z--1 h-full bg-white bg-gradient-to-t dark:bg-black" />
+      <div class="bg-white h-full [mask-image:radial-gradient(900px_at_center,oklch(var(--primary))_30%,transparent)] inset-x-0 bottom-0 absolute z--1 bg-gradient-to-t dark:bg-black" />
     </div>
   </Transition>
 </template>

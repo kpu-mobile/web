@@ -15,8 +15,8 @@ const reviews = [
 
 <template>
   <KmMarquee pause-on-hover>
-    <figure v-for="review in reviews" :key="review.name" class="w-64 cursor-pointer overflow-hidden border border-gray-950/[.1] rounded-xl bg-gray-950/[.01] p-4 dark:border-gray-50/[.1] dark:bg-gray-50/[.10] hover:bg-gray-950/[.05] dark:hover:bg-gray-50/[.15]">
-      <div class="flex flex-row items-center gap-2">
+    <figure v-for="review in reviews" :key="review.name" class="p-4 border border-gray-950/[.1] rounded-xl bg-gray-950/[.01] w-64 cursor-pointer overflow-hidden dark:border-gray-50/[.1] dark:bg-gray-50/[.10] hover:bg-gray-950/[.05] dark:hover:bg-gray-50/[.15]">
+      <div class="flex flex-row gap-2 items-center">
         <KmAvatar :src="`https://avatar.vercel.sh/${review.name}`" class="size-8" />
         <div class="flex flex-col">
           <span class="text-sm font-medium dark:text-white">
@@ -24,7 +24,7 @@ const reviews = [
           </span>
         </div>
       </div>
-      <blockquote class="mt-2 text-pretty text-sm">
+      <blockquote class="text-sm mt-2 text-pretty">
         {{ review.content }}
       </blockquote>
     </figure>

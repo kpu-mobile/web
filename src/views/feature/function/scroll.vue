@@ -18,7 +18,7 @@ const router = useRouter()
         下一页
       </KmButton>
     </template>
-    <div class="h-full flex flex-col gap-4 p-4">
+    <div class="p-4 flex flex-col gap-4 h-full">
       随意滚动当前页面到任意位置并点击右上角的「下一页」按钮，再次返回页面时会定位在离开时的位置
       <KmButton @click="router.back()">
         返回

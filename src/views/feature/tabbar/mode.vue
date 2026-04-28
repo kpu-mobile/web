@@ -11,7 +11,7 @@ const mode = ref<'fixed' | 'sticky'>('fixed')
 
 <template>
   <KmPageLayout :navbar="false" tabbar :tabbar-mode="mode">
-    <div class="flex flex-col gap-4 p-4">
+    <div class="p-4 flex flex-col gap-4">
       <KmTabs
         v-model="mode" :list="[
           {
@@ -22,6 +22,7 @@ const mode = ref<'fixed' | 'sticky'>('fixed')
             label: '粘性',
             value: 'sticky',
           }]"
+        list-class="w-full border"
       />
       <KmButton @click="router.back()">
         返回

@@ -13,11 +13,11 @@ export const i18n = createI18n({
 })
 
 function setupI18n(app: App) {
-  const settingsStore = useSettingsStore()
+  const appSettingsStore = useAppSettingsStore()
   // 注释报错
   // eslint-disable-next-line ts/ban-ts-comment
   // @ts-expect-error
-  i18n.global.locale.value = settingsStore.lang
+  i18n.global.locale.value = appSettingsStore.lang
   app.use(i18n)
 }
 function getLocales() {
@@ -28,10 +28,16 @@ const localesName: Record<string, any> = {}
 for (const key in messages) {
   switch (key) {
     case 'zh-cn':
-      localesName[key] = '中文'
+      localesName[key] = {
+        label: '中文',
+        direction: 'ltr',
+      }
       break
     case 'en-us':
-      localesName[key] = 'English'
+      localesName[key] = {
+        label: 'English',
+        direction: 'ltr',
+      }
       break
   }
 }

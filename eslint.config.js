@@ -1,5 +1,4 @@
 import antfu from '@antfu/eslint-config'
-// import vueI18n from '@intlify/eslint-plugin-vue-i18n'
 
 export default antfu(
   {
@@ -9,9 +8,9 @@ export default antfu(
       'dist*',
     ],
   },
-  // ...vueI18n.configs['flat/recommended'],
   {
     rules: {
+      'e18e/prefer-static-regex': 'off',
       'eslint-comments/no-unlimited-disable': 'off',
       'curly': ['error', 'all'],
       'ts/no-unused-expressions': ['error', {

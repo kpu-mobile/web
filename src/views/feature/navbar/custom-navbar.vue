@@ -7,24 +7,20 @@ definePage({
 
 const router = useRouter()
 
-const scrollTop = ref(0)
-function onScroll(e: Event) {
-  scrollTop.value = (e.target as HTMLElement).scrollTop
-}
+// const scrollTop = ref(0)
+// function onScroll(e: Event) {
+//   scrollTop.value = (e.target as HTMLElement).scrollTop
+// }
 </script>
 
 <template>
-  <KmPageLayout navbar @scroll="onScroll">
+  <KmPageLayout navbar class="pt+safe-[200px]" :style="{ scrollTimelineName: '--navbar-timeline' }" content-class="mt+safe!">
     <template #navbar>
-      <div
-        class="h-[80px] flex flex-center gap-2 bg-([url('https://picsum.photos/375/60')] cover center no-repeat) text-light text-shadow text-shadow-color-dark shadow transition-all transition-all-500" :class="{
-          'h-[60px]!': scrollTop > 50,
-        }"
-      >
+      <div class="custom-navbar text-shadow text-light text-shadow-color-dark bg-[url('https://picsum.photos/375/200')] flex flex-center gap-2 shadow transition-all-500 bg-cover bg-center bg-no-repeat">
         头部导航
       </div>
     </template>
-    <div class="h-full flex flex-col gap-4 p-4">
+    <div class="p-4 flex flex-col gap-4 h-full">
       使用自定义导航可以满足更复杂的业务场景，例如当前页面，你可以滚动页面试试。
       <KmButton @click="router.back()">
         返回
@@ -35,3 +31,23 @@ function onScroll(e: Event) {
     </div>
   </KmPageLayout>
 </template>
+
+<style scoped>
+@keyframes navbar-shrink {
+  0% {
+    height: 200px;
+    font-size: 48px;
+  }
+
+  100% {
+    height: 60px;
+    font-size: 18px;
+  }
+}
+
+.custom-navbar {
+  animation: navbar-shrink linear forwards;
+  animation-range: 0 140px;
+  animation-timeline: --navbar-timeline;
+}
+</style>

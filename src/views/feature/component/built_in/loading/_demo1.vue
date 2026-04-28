@@ -1,19 +1,17 @@
 <script setup lang="ts">
-import { loadingHide, loadingShow } from '@/ui/components/KmLoading'
-
 const type = ref<'plane' | 'chase' | 'bounce' | 'wave' | 'pulse' | 'flow' | 'swing' | 'circle' | 'circle-fade' | 'grid' | 'fold' | 'wander'>('plane')
 const size = ref(50)
 const text = ref('加载中...')
 
 function loading() {
   // 提供 3 个参数
-  loadingShow({
+  const { close } = useKmLoading({
     type: type.value,
     size: size.value,
     text: text.value,
   })
   setTimeout(() => {
-    loadingHide()
+    close()
   }, 2000)
 }
 </script>

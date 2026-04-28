@@ -6,31 +6,31 @@ definePage({
     title: 'pages.function.watermark',
   },
 })
-const settingsStore = useSettingsStore()
-const watermarkStore = useWatermarkStore()
+const appSettingsStore = useAppSettingsStore()
+const appWatermarkStore = useAppWatermarkStore()
 const enableWatermark = computed({
   get() {
-    return settingsStore.settings.app.enableWatermark
+    return appSettingsStore.settings.app.watermark
   },
   set(value) {
-    settingsStore.$patch((state) => {
-      state.settings.app.enableWatermark = value
+    appSettingsStore.$patch((state) => {
+      state.settings.app.watermark = value
     })
   },
 })
 function updateWatermark() {
-  watermarkStore.update({
+  appWatermarkStore.update({
     content: dayjs().format(`YYYY-MM-DD \n HH:mm:ss`),
   })
 }
 function resetWatermark() {
-  watermarkStore.update()
+  appWatermarkStore.update()
 }
 </script>
 
 <template>
   <KmPageLayout navbar navbar-start-side="back">
-    <div class="flex flex-col items-center gap-4 p-4">
+    <div class="p-4 flex flex-col gap-4 items-center">
       <KmSwitch v-model="enableWatermark" />
       <KmButton v-show="enableWatermark" @click="updateWatermark">
         更新水印

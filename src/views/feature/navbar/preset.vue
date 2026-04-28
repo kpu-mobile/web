@@ -35,7 +35,7 @@ function toggleNavbarEndSide(navbar: navbarSideOptions) {
 
 <template>
   <KmPageLayout navbar :navbar-start-side="navbarStartSide" :navbar-end-side="navbarEndSide">
-    <div class="flex flex-col gap-4 p-4">
+    <div class="p-4 flex flex-col gap-4">
       <div class="flex gap-4">
         <!--        -->
         <div class="flex-1">

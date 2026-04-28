@@ -19,7 +19,7 @@ watch(tabbarMask, (value) => {
 
 <template>
   <KmPageLayout :navbar="false" tabbar :tabbar-border :tabbar-radius :tabbar-mask>
-    <div class="flex flex-col gap-4 p-4">
+    <div class="p-4 flex flex-col gap-4">
       <div class="flex gap-2">
         <p>边框</p>
         <KmSwitch v-model="tabbarBorder" />

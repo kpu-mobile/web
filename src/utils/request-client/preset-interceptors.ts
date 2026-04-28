@@ -37,7 +37,8 @@ export function defaultResponseInterceptor({
             : responseData[dataField]
         }
       }
-      throw Object.assign({}, response, { response })
+
+      throw { ...response, ...{ response } } // eslint-disable-line no-throw-literal
     },
   }
 }

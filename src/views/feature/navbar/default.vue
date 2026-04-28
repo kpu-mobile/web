@@ -10,7 +10,7 @@ const router = useRouter()
 
 <template>
   <KmPageLayout navbar>
-    <div class="flex flex-col gap-4 p-4">
+    <div class="p-4 flex flex-col gap-4">
       <KmButton @click="router.back()">
         返回
       </KmButton>

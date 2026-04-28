@@ -5,7 +5,7 @@ definePage({
   },
 })
 const development = import.meta.env.MODE
-const settingsStore = useSettingsStore()
+const appSettingsStore = useAppSettingsStore()
 const text = ref('')
 const data = computed(() => text.value ? [JSON.parse(text.value)] : [])
 function onError(type: number) {
@@ -31,8 +31,8 @@ function onError(type: number) {
 
 <template>
   <KmPageLayout navbar navbar-start-side="back">
-    <div v-if="development !== 'development'" class="flex flex-col items-center gap-4 p-4">
-      <div v-if="settingsStore.settings.app.enableErrorLog " class="w-full">
+    <div v-if="development !== 'development'" class="p-4 flex flex-col gap-4 items-center">
+      <div v-if="appSettingsStore.settings.app.errorLog " class="w-full">
         <div class="flex justify-evenly">
           <KmButton @click="onError(1)">
             模拟触发错误1
@@ -42,27 +42,27 @@ function onError(type: number) {
           </KmButton>
         </div>
         <KmDivider />
-        <div v-for="(item, index) in data" :key="index" class="flex flex-col gap-2 break-words rounded bg-white p-4">
+        <div v-for="(item, index) in data" :key="index" class="p-4 rounded bg-white flex flex-col gap-2 break-words">
           <div>
             <div>错误信息</div>
-            <div class="text-xs text-gray-5">
+            <div class="text-gray-5 text-xs">
               {{ item.err.message }}
             </div>
           </div>
           <div>
-            <div>错误详情</div><div class="text-xs text-gray-5">
+            <div>错误详情</div><div class="text-gray-5 text-xs">
               {{ item.err.stack }}
             </div>
           </div>
           <div>
             <div>错误链接</div>
-            <div class="text-xs text-gray-5">
+            <div class="text-gray-5 text-xs">
               {{ item.url }}
             </div>
           </div>
           <div>
             <div>时间</div>
-            <div class="text-xs text-gray-5">
+            <div class="text-gray-5 text-xs">
               {{ item.datetime }}
             </div>
           </div>

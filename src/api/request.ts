@@ -11,7 +11,7 @@ import {
   errorMessageResponseInterceptor,
   RequestClient,
 } from '@/utils/request-client'
-import { refreshTokenApi } from './modules/user'
+import { refreshTokenApi } from './modules/app'
 
 const apiURL = (import.meta.env.DEV && import.meta.env.VITE_OPEN_PROXY) ? '/proxy/' : import.meta.env.VITE_APP_API_BASEURL
 
@@ -26,15 +26,15 @@ function createRequestClient(baseURL: string, options?: RequestClientOptions) {
    */
   async function doReAuthenticate() {
     console.warn('Access token or refresh token is invalid or expired. ')
-    const userStore = useUserStore()
-    userStore.token = ''
+    const appAuthStore = useAppAuthStore()
+    appAuthStore.token = ''
     if (
-      userStore.isLogin
+      appAuthStore.isLogin
     ) {
       // accessStore.setLoginExpired(true)
     }
     else {
-      await userStore.logout()
+      await appAuthStore.logout()
     }
   }
 
@@ -42,10 +42,10 @@ function createRequestClient(baseURL: string, options?: RequestClientOptions) {
    * 刷新token逻辑
    */
   async function doRefreshToken() {
-    const userStore = useUserStore()
+    const appAuthStore = useAppAuthStore()
     const resp = await refreshTokenApi()
     const newToken = resp.token
-    userStore.token = newToken
+    appAuthStore.token = newToken
     return newToken
   }
 
@@ -56,11 +56,14 @@ function createRequestClient(baseURL: string, options?: RequestClientOptions) {
   // 请求头处理
   client.addRequestInterceptor({
     fulfilled: async (config) => {
-      const userStore = useUserStore()
-      const settingsStore = useSettingsStore()
-      const token = userStore.token
+      if (config.fake) {
+        config.baseURL = '/fake/'
+      }
+      const appAuthStore = useAppAuthStore()
+      const appSettingsStore = useAppSettingsStore()
+      const token = appAuthStore.token
       config.headers.Token = formatToken(token)
-      config.headers['Accept-Language'] = settingsStore.lang
+      config.headers['Accept-Language'] = appSettingsStore.lang
       return config
     },
   })

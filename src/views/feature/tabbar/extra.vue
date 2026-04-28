@@ -10,7 +10,7 @@ const router = useRouter()
 <template>
   <KmPageLayout :navbar="false" tabbar>
     <template #tabbar-extra>
-      <div class="flex gap-2 p-2">
+      <div class="p-2 flex gap-2">
         <KmButton size="sm" class="w-full">
           提交
         </KmButton>
@@ -19,7 +19,7 @@ const router = useRouter()
         </KmButton>
       </div>
     </template>
-    <div class="flex flex-col gap-4 p-4">
+    <div class="p-4 flex flex-col gap-4">
       <p>
         额外区域位于底部标签栏上方，可以放置任何内容，例如状态栏、操作按钮等。
       </p>

@@ -11,7 +11,7 @@ const tabbarBadge = useTabbarBadgeStore()
 
 <template>
   <KmPageLayout :navbar="false" tabbar tabbar-name="third">
-    <div class="flex flex-col gap-4 p-4">
+    <div class="p-4 flex flex-col gap-4">
       <div>角标可以搭配 Pinia 一起使用，实现动态控制。</div>
       <KmPageMain title="点标记" class="m-0">
         <KmButton @click="tabbarBadge.switchDot">

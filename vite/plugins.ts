@@ -11,8 +11,6 @@ import Unocss from 'unocss/vite'
 import autoImport from 'unplugin-auto-import/vite'
 import TurboConsole from 'unplugin-turbo-console/vite'
 import components from 'unplugin-vue-components/vite'
-import { VueRouterAutoImports } from 'unplugin-vue-router'
-import VueRouter from 'unplugin-vue-router/vite'
 import { loadEnv } from 'vite'
 import Archiver from 'vite-plugin-archiver'
 import banner from 'vite-plugin-banner'
@@ -22,13 +20,15 @@ import { vitePluginFakeServer } from 'vite-plugin-fake-server'
 import { qrcode } from 'vite-plugin-qrcode'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import VueDevTools from 'vite-plugin-vue-devtools'
+import { VueRouterAutoImports } from 'vue-router/unplugin'
+import VueRouter from 'vue-router/vite'
 
 export default function createVitePlugins(mode: string, isBuild = false) {
   const viteEnv = parseLoadedEnv(loadEnv(mode, process.cwd()))
   const vitePlugins: (PluginOption | PluginOption[])[] = [
     VueRouter({
       routesFolder: './src/views',
-      dts: './src/types/typed-router.d.ts',
+      dts: './src/types/route-map.d.ts',
       exclude: ['**/components', '**/_*/**', '**/_*'],
     }),
     vue(),
@@ -68,8 +68,12 @@ export default function createVitePlugins(mode: string, isBuild = false) {
       ],
       dts: './src/types/auto-imports.d.ts',
       dirs: [
-        './src/store/modules',
-        './src/utils/composables',
+        './src/store/modules/**/*',
+        './src/composables/**/*',
+        './src/ui/components/KmDrawer/index.ts',
+        './src/ui/components/KmModal/index.ts',
+        './src/ui/components/KmLoading/index.ts',
+        './src/ui/components/KmToast/index.ts',
       ],
     }),
 
@@ -94,8 +98,7 @@ export default function createVitePlugins(mode: string, isBuild = false) {
     // https://github.com/condorheroblog/vite-plugin-fake-server
     vitePluginFakeServer({
       logger: !isBuild,
-      include: 'src/mock',
-      infixName: false,
+      include: 'src/api/modules',
       enableProd: isBuild && viteEnv.VITE_BUILD_MOCK,
     }),
 
@@ -129,16 +132,18 @@ export default function createVitePlugins(mode: string, isBuild = false) {
       transform: (code, id) => {
         if (/src\/main.ts$/.test(id)) {
           if (viteEnv.VITE_APP_DEBUG_TOOL === 'eruda') {
-            code = code.concat(`
-              import eruda from 'eruda'
-              eruda.init()
-            `)
+            code = `
+${code}
+import eruda from 'eruda'
+eruda.init()
+            `
           }
           else if (viteEnv.VITE_APP_DEBUG_TOOL === 'vconsole') {
-            code = code.concat(`
-              import VConsole from 'vconsole'
-              new VConsole()
-            `)
+            code = `
+${code}
+import VConsole from 'vconsole'
+new VConsole()
+            `
           }
           return {
             code,

@@ -32,13 +32,13 @@ function goBack() {
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col items-center justify-center">
+  <div class="flex flex-col min-h-screen items-center justify-center">
     <KmIcon name="404" class="text-[300px] -mt-9xl" />
-    <div class="flex flex-col items-center gap-4">
-      <h1 class="m-0 text-6xl font-sans">
+    <div class="flex flex-col gap-4 items-center">
+      <h1 class="text-6xl font-sans m-0">
         404
       </h1>
-      <div class="mx-0 text-xl text-stone-5">
+      <div class="text-stone-5 text-xl mx-0">
         抱歉，你访问的页面不存在
       </div>
       <KmButton @click="goBack">

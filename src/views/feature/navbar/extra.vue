@@ -46,7 +46,7 @@ const c = [
         <van-dropdown-item v-model="l" :options="c" />
       </van-dropdown-menu>
     </template>
-    <div class="flex flex-col gap-4 p-4">
+    <div class="p-4 flex flex-col gap-4">
       <p>
         额外区域位于导航栏下方，可以放置任何内容，例如搜索框、下拉菜单等。
       </p>

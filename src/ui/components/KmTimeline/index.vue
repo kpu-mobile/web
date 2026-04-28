@@ -50,7 +50,7 @@ function handleScroll(event: Event) {
     @on-scroll="handleScroll"
   >
     <!-- 顶部日期显示 -->
-    <div class="absolute top-0 z-1 w-20 flex-col-center-start p-2 backdrop-blur">
+    <div class="p-2 flex-col-center-start w-20 top-0 absolute z-1 backdrop-blur">
       <KmAnimatedCountTo
         :value="currentYear"
         will-change
@@ -77,7 +77,7 @@ function handleScroll(event: Event) {
     </div>
 
     <!-- 时间线内容 -->
-    <div class="w-full flex flex-col gap-4">
+    <div class="flex flex-col gap-4 w-full">
       <div
         v-for="(item, index) in data"
         :key="index"
@@ -86,7 +86,7 @@ function handleScroll(event: Event) {
       >
         <!-- 左侧日期 -->
         <div
-          class="w-20 flex-col-center-start p-2 transition-all" :class="[
+          class="p-2 flex-col-center-start w-20 transition-all" :class="[
             {
               'opacity-0 -translate-y-10': index <= currentIndex,
               'opacity-0': merge && index > 0 && item.datetime === data[index - 1].datetime,
@@ -127,6 +127,6 @@ number-flow-vue::part(suffix) {
   padding-inline: 0.5rem;
   font-size: 1.5rem;
   font-weight: 400;
-  color: hsl(var(--muted-foreground) / 60%);
+  color: oklch(var(--muted-foreground) / 60%);
 }
 </style>

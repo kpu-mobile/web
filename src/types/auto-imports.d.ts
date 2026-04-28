@@ -14,6 +14,7 @@ declare global {
   const customRef: typeof import('vue').customRef
   const defineAsyncComponent: typeof import('vue').defineAsyncComponent
   const defineComponent: typeof import('vue').defineComponent
+  const definePage: typeof import('vue-router/experimental').definePage
   const defineStore: typeof import('pinia').defineStore
   const effectScope: typeof import('vue').effectScope
   const getActivePinia: typeof import('pinia').getActivePinia
@@ -27,6 +28,7 @@ declare global {
   const isReadonly: typeof import('vue').isReadonly
   const isRef: typeof import('vue').isRef
   const isShallow: typeof import('vue').isShallow
+  const kmToast: typeof import('../ui/components/KmToast/index').kmToast
   const mapActions: typeof import('pinia').mapActions
   const mapGetters: typeof import('pinia').mapGetters
   const mapState: typeof import('pinia').mapState
@@ -67,24 +69,26 @@ declare global {
   const toValue: typeof import('vue').toValue
   const triggerRef: typeof import('vue').triggerRef
   const unref: typeof import('vue').unref
+  const useAppAuth: typeof import('../composables/app/auth').useAppAuth
+  const useAppAuthStore: typeof import('../store/modules/app/auth').useAppAuthStore
+  const useAppKeepAliveStore: typeof import('../store/modules/app/keepAlive').useAppKeepAliveStore
+  const useAppPage: typeof import('../composables/app/page').useAppPage
+  const useAppSettingsStore: typeof import('../store/modules/app/settings').useAppSettingsStore
+  const useAppWatermarkStore: typeof import('../store/modules/app/watermark').useAppWatermarkStore
   const useAttrs: typeof import('vue').useAttrs
-  const useAuth: typeof import('../utils/composables/useAuth').default
   const useCssModule: typeof import('vue').useCssModule
   const useCssVars: typeof import('vue').useCssVars
-  const useGlobalProperties: typeof import('../utils/composables/useGlobalProperties').default
   const useId: typeof import('vue').useId
-  const useKeepAliveStore: typeof import('../store/modules/keepAlive').useKeepAliveStore
+  const useKmDrawer: typeof import('../ui/components/KmDrawer/index').useKmDrawer
+  const useKmLoading: typeof import('../ui/components/KmLoading/index').useKmLoading
+  const useKmModal: typeof import('../ui/components/KmModal/index').useKmModal
   const useLink: typeof import('vue-router/auto').useLink
   const useModel: typeof import('vue').useModel
-  const usePage: typeof import('../utils/composables/usePage').default
   const useRoute: typeof import('vue-router').useRoute
   const useRouter: typeof import('vue-router').useRouter
-  const useSettingsStore: typeof import('../store/modules/settings').useSettingsStore
   const useSlots: typeof import('vue').useSlots
   const useTabbarBadgeStore: typeof import('../store/modules/tabbarBadge').useTabbarBadgeStore
   const useTemplateRef: typeof import('vue').useTemplateRef
-  const useUserStore: typeof import('../store/modules/user').useUserStore
-  const useWatermarkStore: typeof import('../store/modules/watermark').useWatermarkStore
   const watch: typeof import('vue').watch
   const watchEffect: typeof import('vue').watchEffect
   const watchPostEffect: typeof import('vue').watchPostEffect
@@ -95,4 +99,10 @@ declare global {
   // @ts-ignore
   export type { Component, Slot, Slots, ComponentPublicInstance, ComputedRef, DirectiveBinding, ExtractDefaultPropTypes, ExtractPropTypes, ExtractPublicPropTypes, InjectionKey, PropType, Ref, ShallowRef, MaybeRef, MaybeRefOrGetter, VNode, WritableComputedRef } from 'vue'
   import('vue')
+  // @ts-ignore
+  export type { DrawerProps, DrawerEmits } from '../ui/components/KmDrawer/index'
+  import('../ui/components/KmDrawer/index')
+  // @ts-ignore
+  export type { ModalProps, ModalEmits } from '../ui/components/KmModal/index'
+  import('../ui/components/KmModal/index')
 }

@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import type { RouteNamedMap } from 'vue-router/auto-routes'
 import { useI18n } from 'vue-i18n'
-import { $t } from '@/locales'
-import { cn } from '@/utils'
 
 defineOptions({
   name: 'Feature',
@@ -28,98 +26,98 @@ const data: {
   }[]
 }[] = [
   {
-    title: $t('pages.navbar.root'),
+    title: t('pages.navbar.root'),
     icon: 'i-fluent:document-header-16-regular',
     routes: [
       {
         path: '/feature/navbar/default',
-        title: $t('pages.navbar.default'),
+        title: t('pages.navbar.default'),
       },
       {
         path: '/feature/navbar/none',
-        title: $t('pages.navbar.none'),
+        title: t('pages.navbar.none'),
       },
       {
         path: '/feature/navbar/preset',
-        title: $t('pages.navbar.preset'),
+        title: t('pages.navbar.preset'),
         pro: true,
       },
       {
         path: '/feature/navbar/mode',
-        title: $t('pages.navbar.mode'),
+        title: t('pages.navbar.mode'),
         pro: true,
       },
       {
         path: '/feature/navbar/style',
-        title: $t('pages.navbar.style'),
+        title: t('pages.navbar.style'),
         pro: true,
       },
       {
         path: '/feature/navbar/title-no-center',
-        title: $t('pages.navbar.title-no-center'),
+        title: t('pages.navbar.title-no-center'),
         pro: true,
       },
       {
         path: '/feature/navbar/custom-title',
-        title: $t('pages.navbar.custom-title'),
+        title: t('pages.navbar.custom-title'),
         pro: true,
       },
       {
         path: '/feature/navbar/custom-area',
-        title: $t('pages.navbar.custom-area'),
+        title: t('pages.navbar.custom-area'),
       },
       {
         path: '/feature/navbar/custom-navbar',
-        title: $t('pages.navbar.custom-navbar'),
+        title: t('pages.navbar.custom-navbar'),
       },
       {
         path: '/feature/navbar/extra',
-        title: $t('pages.navbar.extra'),
+        title: t('pages.navbar.extra'),
         pro: true,
       },
     ],
   },
   {
-    title: $t('pages.tabbar.root'),
+    title: t('pages.tabbar.root'),
     icon: 'i-fluent:document-footer-16-regular',
     routes: [
       {
         path: '/feature/tabbar/default',
-        title: $t('pages.tabbar.default'),
+        title: t('pages.tabbar.default'),
       },
       {
         path: '/feature/tabbar/mode',
-        title: $t('pages.tabbar.mode'),
+        title: t('pages.tabbar.mode'),
         pro: true,
       },
       {
         path: '/feature/tabbar/style',
-        title: $t('pages.tabbar.style'),
+        title: t('pages.tabbar.style'),
         pro: true,
       },
       {
         path: '/feature/tabbar/multi',
-        title: $t('pages.tabbar.multi'),
+        title: t('pages.tabbar.multi'),
         pro: true,
       },
       {
         path: '/feature/tabbar/badge',
-        title: $t('pages.tabbar.badge'),
+        title: t('pages.tabbar.badge'),
         pro: true,
       },
       {
         path: '/feature/tabbar/custom-area',
-        title: $t('pages.tabbar.custom-area'),
+        title: t('pages.tabbar.custom-area'),
       },
       {
         path: '/feature/tabbar/extra',
-        title: $t('pages.tabbar.extra'),
+        title: t('pages.tabbar.extra'),
         pro: true,
       },
     ],
   },
   {
-    title: $t('pages.function.root'),
+    title: t('pages.function.root'),
     icon: 'i-ri:function-add-line',
     routes: [
       {
@@ -129,60 +127,60 @@ const data: {
       },
       {
         path: '/feature/function/icon',
-        title: $t('pages.function.icon'),
+        title: t('pages.function.icon'),
         icon: 'i-ri:remixicon-line',
       },
       {
         path: '/feature/function/i18n',
-        title: $t('pages.function.i18n'),
+        title: t('pages.function.i18n'),
         icon: 'i-ri:earth-line',
         pro: true,
       },
       {
         path: '/feature/function/keepAlive',
-        title: $t('pages.function.keepAlive'),
+        title: t('pages.function.keepAlive'),
         icon: 'i-cil:window-restore',
       },
       {
         path: '/feature/function/font',
-        title: $t('pages.function.font'),
+        title: t('pages.function.font'),
         icon: 'i-ri:font-size',
         pro: true,
       },
       {
         path: '/feature/function/watermark',
-        title: $t('pages.function.watermark'),
+        title: t('pages.function.watermark'),
         icon: 'i-icon-park-outline:mosaic',
         pro: true,
       },
       {
         path: '/feature/function/errorLog',
-        title: $t('pages.function.errorLog'),
+        title: t('pages.function.errorLog'),
         icon: 'i-ri:bug-line',
         pro: true,
       },
       {
         path: '/feature/function/zoomable',
-        title: $t('pages.function.zoomable'),
+        title: t('pages.function.zoomable'),
         icon: 'i-mingcute:zoom-in-line',
         pro: true,
       },
       {
         path: '/feature/function/title',
-        title: $t('pages.function.title'),
+        title: t('pages.function.title'),
         icon: 'i-mdi:format-title',
         pro: true,
       },
       {
         path: '/feature/function/scroll',
-        title: $t('pages.function.scroll'),
+        title: t('pages.function.scroll'),
         icon: 'i-carbon:auto-scroll',
         pro: true,
       },
     ],
   },
   {
-    title: $t('pages.permission.root'),
+    title: t('pages.permission.root'),
     icon: 'i-ri:shield-keyhole-line',
     routes: [
       {
@@ -223,6 +221,16 @@ const data: {
         title: '徽章',
       },
       {
+        path: '/feature/component/built_in/blur_reveal/',
+        title: '模糊揭示',
+        pro: true,
+      },
+      {
+        path: '/feature/component/built_in/border_beam/',
+        title: '边框光束',
+        pro: true,
+      },
+      {
         path: '/feature/component/built_in/button/',
         title: '按钮',
       },
@@ -251,6 +259,21 @@ const data: {
       {
         path: '/feature/component/built_in/drawer/',
         title: '抽屉',
+      },
+      {
+        path: '/feature/component/built_in/empty/',
+        title: '空状态',
+        pro: true,
+      },
+      {
+        path: '/feature/component/built_in/flip_words/',
+        title: '翻转文字',
+        pro: true,
+      },
+      {
+        path: '/feature/component/built_in/gradient_button/',
+        title: '渐变按钮',
+        pro: true,
       },
       {
         path: '/feature/component/built_in/input/',
@@ -289,6 +312,11 @@ const data: {
         pro: true,
       },
       {
+        path: '/feature/component/built_in/qrcode/',
+        title: '二维码',
+        pro: true,
+      },
+      {
         path: '/feature/component/built_in/scratch_off/',
         title: '刮刮乐',
         pro: true,
@@ -298,12 +326,27 @@ const data: {
         title: '滚动区域',
       },
       {
+        path: '/feature/component/built_in/scrolling_text/',
+        title: '滚动文字',
+        pro: true,
+      },
+      {
         path: '/feature/component/built_in/select/',
         title: '选择器',
       },
       {
         path: '/feature/component/built_in/slider/',
         title: '滑块',
+      },
+      {
+        path: '/feature/component/built_in/smooth_swipe/',
+        title: '平滑滚动',
+        pro: true,
+      },
+      {
+        path: '/feature/component/built_in/sparkles_text/',
+        title: '闪烁文字',
+        pro: true,
       },
       {
         path: '/feature/component/built_in/sparkline/',
@@ -324,6 +367,16 @@ const data: {
         title: '标签页',
       },
       {
+        path: '/feature/component/built_in/text_highlight/',
+        title: '文字高亮',
+        pro: true,
+      },
+      {
+        path: '/feature/component/built_in/time_ago/',
+        title: '可阅读时间',
+        pro: true,
+      },
+      {
         path: '/feature/component/built_in/timeline/',
         title: '时间线',
         pro: true,
@@ -342,11 +395,6 @@ const data: {
     title: '插件',
     icon: 'i-clarity:plugin-outline-alerted',
     routes: [
-      {
-        path: '/feature/plugin/qrcode',
-        title: '二维码',
-        icon: 'i-material-symbols:qr-code',
-      },
       {
         path: '/feature/plugin/esign',
         title: '电子签名',
@@ -401,23 +449,23 @@ const data: {
   <KmPageLayout :navbar="false" saved-position tabbar>
     <div class="p-4">
       <div v-for="(item, index) in data" :key="index" class="mb-4">
-        <div class="inline-flex items-center gap-2 text-gray-7 dark-text-gray-3">
+        <div class="inline-flex gap-2 items-center">
           <KmIcon v-if="item.icon" :name="item.icon" class="text-6" />
-          <div class="relative z-0 inline-block text-2xl font-bold after:(absolute bottom-0 left-0 h-2 w-full bg-yellow content-[''] -z-1 dark-bg-yellow-9)">
+          <div class="after:dark-bg-yellow-9 text-2xl font-bold inline-block relative z-0 after:bg-yellow after:h-2 after:w-full after:content-[''] after:bottom-0 after:left-0 after:absolute after:-z-1">
             {{ te(item.title) ? t(item.title) : item.title }}
           </div>
         </div>
-        <div class="grid grid-cols-2 mt-4 gap-3">
+        <div class="mt-4 gap-3 grid grid-cols-2">
           <router-link
-            v-for="route in item.routes" :key="route.path" :to="route.path" :class="cn('relative flex of-hidden border rounded-lg bg-card text-sm text-card-foreground/80 shadow-sm', {
+            v-for="route in item.routes" :key="route.path" :to="route.path" class="text-sm text-card-foreground/80 border rounded-lg bg-card flex shadow-sm relative of-hidden" :class=" {
               'bg-gradient-to-r from-transparent to-[#ffd700] dark-to-[#ffd70030] b-[#d4af37]': route.pro,
-            })"
+            }"
           >
-            <KmIcon v-if="route.pro" name="i-mdi:professional-hexagon" class="z-0 rotate-40 text-6xl c-[#d4af37] absolute! -right-4 -top-3 dark-c-[#d4af3730]" />
-            <div v-if="route.icon" class="z-1 flex-center border-r px-3 py-2 pe-2">
+            <KmIcon v-if="route.pro" name="i-mdi:professional-hexagon" class="text-6xl c-[#d4af37] rotate-40 z-0 dark-c-[#d4af3730] -right-4 -top-3 absolute!" />
+            <div v-if="route.icon" class="px-3 py-2 pe-2 border-r flex-center z-1" :class="{ 'b-[#d4af37]': route.pro }">
               <KmIcon :name="route.icon" />
             </div>
-            <div class="z-1 flex-1 truncate px-3 py-2" :class="{ 'ps-2': route.icon }">
+            <div class="px-3 py-2 flex-1 truncate z-1" :class="{ 'ps-2': route.icon }">
               {{ te(route.title) ? t(route.title) : route.title }}
             </div>
           </router-link>

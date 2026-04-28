@@ -14,13 +14,13 @@ const { copy, copied, isSupported } = useClipboard()
 
 <template>
   <div :class="cn('group relative w-full rounded-lg bg-dark p-4 text-light', props.class)">
-    <pre class="w-full overflow-auto whitespace-pre-line">
+    <pre class="w-full whitespace-pre-line overflow-auto">
       <code class="whitespace-pre" tabindex="0">{{ code }}</code>
     </pre>
     <KmButton
       v-if="isSupported"
       variant="secondary"
-      class="absolute end-3 top-3 border border-light/20 px-2.5"
+      class="px-2.5 border border-light/20 end-3 top-3 absolute"
       @click="copy(code)"
     >
       {{ copied ? t('copied') : '' }}

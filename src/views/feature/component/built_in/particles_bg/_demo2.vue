@@ -1,7 +1,7 @@
 <template>
-  <div class="relative h-50 w-full flex flex-col items-center justify-center overflow-hidden bg-background p-2">
+  <div class="p-2 bg-background flex flex-col h-50 w-full items-center justify-center relative overflow-hidden">
     <KmParticlesBg
-      class="absolute inset-0"
+      class="inset-0 absolute"
       color="#2563EB"
       :quantity="1000"
       :ease="100"

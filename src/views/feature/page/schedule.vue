@@ -44,7 +44,7 @@ function cancelBooking(index: number) {
 <template>
   <KmPageLayout navbar navbar-start-side="back">
     1
-    <div class="absolute left-0 top-0 h-full w-full of-auto overscroll-none">
+    <div class="overscroll-none h-full w-full left-0 top-0 absolute of-auto">
       <table>
         <thead>
           <tr>
@@ -60,7 +60,7 @@ function cancelBooking(index: number) {
           <tr v-for="(l, index) in x" :key="index">
             <td>{{ l }}</td>
             <td v-for="(date, dateIndex) in y" :key="dateIndex">
-              <div v-if="isBooked(l, date) >= 0" class="flex flex-col items-center gap-2">
+              <div v-if="isBooked(l, date) >= 0" class="flex flex-col gap-2 items-center">
                 {{ r[isBooked(l, date)]?.content }}
                 <van-button type="danger" size="mini" @click="cancelBooking(isBooked(l, date))">
                   取消预约

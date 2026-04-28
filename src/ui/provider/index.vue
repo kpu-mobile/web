@@ -7,14 +7,14 @@ const locales: Record<string, any> = {
   'zh-cn': zhCN,
   'en-us': enUS,
 }
-const settingsStore = useSettingsStore()
-watch(() => settingsStore.lang, () => {
-  Locale.use(settingsStore.lang, locales[settingsStore.lang])
+const appSettingsStore = useAppSettingsStore()
+watch(() => appSettingsStore.lang, () => {
+  Locale.use(appSettingsStore.lang, locales[appSettingsStore.lang])
 })
 </script>
 
 <template>
-  <VanConfigProvider :theme="settingsStore.currentColorScheme" class="min-h-vh supports-[(min-height:100dvh)]:min-h-dvh">
+  <VanConfigProvider :theme="appSettingsStore.currentColorScheme" class="min-h-vh supports-[(min-height:100dvh)]:min-h-dvh">
     <slot />
   </VanConfigProvider>
 </template>

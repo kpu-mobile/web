@@ -80,7 +80,7 @@ const emits = defineEmits<{
 }>()
 
 const route = useRoute()
-const settingsStore = useSettingsStore()
+const appSettingsStore = useAppSettingsStore()
 const { t, te } = useI18n()
 const layoutRef = useTemplateRef('layoutRef')
 const { y, arrivedState } = useScroll(layoutRef)
@@ -122,22 +122,22 @@ const navbarRef = useTemplateRef('navbarRef')
 const { height: navbarHeight } = useElementSize(navbarRef, undefined, { box: 'border-box' })
 const Q = ref(false)
 watch(y, (a, w) => {
-  Q.value = (props.navbarMode ?? settingsStore.settings.navbar.mode) === 'sticky' && a > w && a > navbarHeight.value
+  Q.value = (props.navbarMode ?? appSettingsStore.settings.navbar.mode) === 'sticky' && a > w && a > navbarHeight.value
 })
 // Tabbar
 const tabbarList = computed<any[]>(() => {
-  if (settingsStore.settings.tabbar.list.length > 0) {
-    if (Object.hasOwn(settingsStore.settings.tabbar.list[0], 'name')) {
-      const a = settingsStore.settings.tabbar.list.find(w => w.name === props.tabbarName)
+  if (appSettingsStore.settings.tabbar.list.length > 0) {
+    if (Object.hasOwn(appSettingsStore.settings.tabbar.list[0], 'name')) {
+      const a = appSettingsStore.settings.tabbar.list.find(w => w.name === props.tabbarName)
       if (a) {
-        return a.list || settingsStore.settings.tabbar.list[0].list || []
+        return a.list || appSettingsStore.settings.tabbar.list[0].list || []
       }
       else {
-        return settingsStore.settings.tabbar.list[0].list || []
+        return appSettingsStore.settings.tabbar.list[0].list || []
       }
     }
     else {
-      return settingsStore.settings.tabbar.list
+      return appSettingsStore.settings.tabbar.list
     }
   }
   return []
@@ -146,7 +146,7 @@ const tabbarRef = useTemplateRef('tabbarRef')
 const { height: tabbarHeight } = useElementSize(tabbarRef, undefined, { box: 'border-box' })
 const W = ref(false)
 watch(y, (a, w) => {
-  W.value = (props.tabbarMode ?? settingsStore.settings.navbar.mode) === 'sticky' && a > w && a > tabbarHeight.value
+  W.value = (props.tabbarMode ?? appSettingsStore.settings.navbar.mode) === 'sticky' && a > w && a > tabbarHeight.value
 })
 // 处理图标显示
 function getIcon(item: any) {
@@ -190,40 +190,39 @@ onBeforeRouteLeave((_to, _from, next) => {
 
 <template>
   <div
-    ref="layoutRef" class="relative h-vh flex flex-col overflow-auto overscroll-none supports-[(height:100dvh)]:h-dvh" :style="{
+    ref="layoutRef"
+    class="overscroll-none flex flex-col h-vh relative overflow-auto supports-[(height:100dvh)]:h-dvh" :style="{
       '--g-navbar-height': `max(${navbarHeight}px, var(--g-navbar-min-height))`,
       '--g-tabbar-height': `max(${tabbarHeight}px, var(--g-tabbar-min-height))`,
     }" @scroll="handleMainScroll($event)"
   >
     <!-- Navbar -->
     <header
-      v-show="navbar ?? settingsStore.settings.navbar.enable"
-      ref="navbarRef"
-      :class="cn('navbar relative w-full flex-col-center bg-[var(--g-navbar-bg)] text-[var(--g-navbar-color)] transition-all pt-safe min-h+safe-t-[var(--g-navbar-min-height)]', {
-        'navbar-static': (navbarMode ?? settingsStore.settings.navbar.mode) === 'static',
-        'navbar-fixed': (navbarMode ?? settingsStore.settings.navbar.mode) !== 'static',
-        ...(navbarMode ?? settingsStore.settings.navbar.mode) === 'show-hide-fixed' && {
+      v-show="navbar ?? appSettingsStore.settings.navbar.enable" ref="navbarRef" :class="cn('navbar relative w-full flex-col-center bg-[var(--g-navbar-bg)] text-[var(--g-navbar-color)] transition-all pt-safe min-h+safe-t-[var(--g-navbar-min-height)]', {
+        'navbar-static': (navbarMode ?? appSettingsStore.settings.navbar.mode) === 'static',
+        'navbar-fixed': (navbarMode ?? appSettingsStore.settings.navbar.mode) !== 'static',
+        ...(navbarMode ?? appSettingsStore.settings.navbar.mode) === 'show-hide-fixed' && {
           '-top-[var(--g-navbar-height)]!': y < navbarHeight,
         },
-        ...(navbarMode ?? settingsStore.settings.navbar.mode) === 'sticky' && {
+        ...(navbarMode ?? appSettingsStore.settings.navbar.mode) === 'sticky' && {
           '-top-[var(--g-navbar-height)]!': Q,
         },
         // 边框
-        'shadow-[0_1px_0_0_hsl(var(--border))]': navbarBorder,
-        'before:shadow-[0_-1px_0_0_hsl(var(--border))]': navbarBorder && navbarMask,
+        'shadow-[0_1px_0_0_oklch(var(--border))]': navbarBorder,
+        'before:shadow-[0_-1px_0_0_oklch(var(--border))]': navbarBorder && navbarMask,
         'rounded-b-2xl overflow-hidden': navbarRadius,
         'before:pointer-events-none before:absolute before:left-0 before:bottom-0 before:z-1 before:h-10 before:w-full before:from-transparent before:to-[var(--g-navbar-bg)] before:bg-gradient-to-t before:opacity-0 before:transition-opacity before:content-empty before:translate-y-full': navbarMask,
         'before:opacity-100': navbarMask && !arrivedState.top,
       }, navbarClass)"
     >
-      <div class="min-h-[var(--g-navbar-min-height)] w-full flex-center">
+      <div class="flex-center min-h-[var(--g-navbar-min-height)] w-full">
         <div
-          class="h-full flex items-center justify-start" :style="{
+          class="flex h-full items-center justify-start" :style="{
             ...(titleCenter && sideWidth && { width: isSupprotRound ? `round(up, ${sideWidth}px, 1px)` : `${Math.ceil(sideWidth)}px` }),
           }"
         >
-          <div ref="startSideRef" class="h-full flex-center whitespace-nowrap">
-            <div class="h-full flex-center whitespace-nowrap px-2 empty:hidden">
+          <div ref="startSideRef" class="flex-center h-full whitespace-nowrap">
+            <div class="px-2 flex-center h-full whitespace-nowrap empty:hidden">
               <slot name="navbar-start">
                 <HeaderSide :side="navbarStartSide" />
               </slot>
@@ -231,24 +230,25 @@ onBeforeRouteLeave((_to, _from, next) => {
           </div>
         </div>
         <div
-          class="min-w-0 flex-1 text-sm" :class="{
+          class="text-sm flex-1 min-w-0" :class="{
             'text-center': titleCenter,
           }"
         >
           <div class="truncate">
             <slot name="navbar">
-              {{ settingsStore.customTitleList.find(he => he.fullPath === route.fullPath)?.title
-                || settingsStore.title && (te(settingsStore.title) ? t(settingsStore.title) : settingsStore.title) }}
+              {{ appSettingsStore.customTitleList.find(he => he.fullPath === route.fullPath)?.title
+                || appSettingsStore.title && (te(appSettingsStore.title) ? t(appSettingsStore.title)
+                  : appSettingsStore.title) }}
             </slot>
           </div>
         </div>
         <div
-          class="h-full flex items-center justify-end" :style="{
+          class="flex h-full items-center justify-end" :style="{
             ...(titleCenter && sideWidth && { width: isSupprotRound ? `round(up, ${sideWidth}px, 1px)` : `${Math.ceil(sideWidth)}px` }),
           }"
         >
-          <div ref="endSideRef" class="h-full flex-center whitespace-nowrap">
-            <div class="h-full flex-center whitespace-nowrap px-2 empty:hidden">
+          <div ref="endSideRef" class="flex-center h-full whitespace-nowrap">
+            <div class="px-2 flex-center h-full whitespace-nowrap empty:hidden">
               <slot name="navbar-end">
                 <HeaderSide :side="navbarEndSide" />
               </slot>
@@ -259,7 +259,7 @@ onBeforeRouteLeave((_to, _from, next) => {
       <div
         :class="cn('w-full empty:hidden',
                    {
-                     'shadow-[0_-1px_0_0_hsl(var(--border))]': navbarBorder,
+                     'shadow-[0_-1px_0_0_oklch(var(--border))]': navbarBorder,
                    })"
       >
         <slot name="navbar-extra" />
@@ -267,13 +267,13 @@ onBeforeRouteLeave((_to, _from, next) => {
     </header>
     <div
       :class="cn('relative flex flex-1 flex-col transition-margin', {
-        ...((navbar ?? settingsStore.settings.navbar.enable) && {
-          'mt-safe': (navbarMode ?? settingsStore.settings.navbar.mode) === 'show-hide-fixed',
-          'mt+safe-[var(--g-navbar-height)]': (navbarMode ?? settingsStore.settings.navbar.mode) !== 'show-hide-fixed',
+        ...((navbar ?? appSettingsStore.settings.navbar.enable) && {
+          'mt-safe': (navbarMode ?? appSettingsStore.settings.navbar.mode) === 'show-hide-fixed',
+          'mt+safe-[var(--g-navbar-height)]': (navbarMode ?? appSettingsStore.settings.navbar.mode) !== 'show-hide-fixed',
         }),
-        ...((tabbar ?? settingsStore.settings.tabbar.enable) && {
-          'mb-safe': (tabbarMode ?? settingsStore.settings.tabbar.mode) === 'sticky',
-          'mb+safe-[var(--g-tabbar-height)]': (tabbarMode ?? settingsStore.settings.tabbar.mode) === 'fixed',
+        ...((tabbar ?? appSettingsStore.settings.tabbar.enable) && {
+          'mb-safe': (tabbarMode ?? appSettingsStore.settings.tabbar.mode) === 'sticky',
+          'mb+safe-[var(--g-tabbar-height)]': (tabbarMode ?? appSettingsStore.settings.tabbar.mode) === 'fixed',
         }),
       }, contentClass)"
     >
@@ -289,29 +289,35 @@ onBeforeRouteLeave((_to, _from, next) => {
           leaveToClass: 'opacity-0',
         }"
       >
-        <div v-if="copyright ?? settingsStore.settings.copyright.enable" class="copyright relative flex flex-wrap items-center justify-center p-4 text-sm text-primary/50">
+        <div
+          v-if="copyright ?? appSettingsStore.settings.copyright.enable"
+          class="copyright text-sm text-primary/50 p-4 flex flex-wrap items-center justify-center relative"
+        >
           <span class="px-1">Copyright</span>
           <KmIcon name="i-ri:copyright-line" class="text-lg" />
-          <span v-if="settingsStore.settings.copyright.dates" class="px-1">{{ settingsStore.settings.copyright.dates }}</span>
-          <template v-if="settingsStore.settings.copyright.company">
-            <a v-if="settingsStore.settings.copyright.website" :href="settingsStore.settings.copyright.website" target="_blank" rel="noopener" class="px-1 text-center no-underline">{{ settingsStore.settings.copyright.company }}</a>
-            <span v-else class="px-1">{{ settingsStore.settings.copyright.company }}</span>
+          <span v-if="appSettingsStore.settings.copyright.dates" class="px-1">{{
+            appSettingsStore.settings.copyright.dates }}</span>
+          <template v-if="appSettingsStore.settings.copyright.company">
+            <a
+              v-if="appSettingsStore.settings.copyright.website" :href="appSettingsStore.settings.copyright.website"
+              target="_blank" rel="noopener" class="px-1 text-center no-underline"
+            >{{
+              appSettingsStore.settings.copyright.company }}</a>
+            <span v-else class="px-1">{{ appSettingsStore.settings.copyright.company }}</span>
           </template>
-          <a v-if="settingsStore.settings.copyright.beian" href="https://beian.miit.gov.cn/" target="_blank" rel="noopener" class="px-1 text-center no-underline">{{ settingsStore.settings.copyright.beian }}</a>
+          <!-- <a v-if="appSettingsStore.settings.copyright.beian" href="https://beian.miit.gov.cn/" target="_blank" rel="noopener" class="px-1 text-center no-underline">{{ appSettingsStore.settings.copyright.beian }}</a> -->
         </div>
       </Transition>
     </div>
     <!-- Tabbar -->
     <footer
-      v-show="tabbar ?? settingsStore.settings.tabbar.enable"
-      ref="tabbarRef"
-      :class="cn('tabbar flex-col-center bg-[var(--g-tabbar-bg)] transition-all pb-safe min-h+safe-b-[calc(var(--g-tabbar-min-height))]', {
-        ...(tabbarMode ?? settingsStore.settings.tabbar.mode) === 'sticky' && {
+      v-show="tabbar ?? appSettingsStore.settings.tabbar.enable" ref="tabbarRef" :class="cn('tabbar flex-col-center bg-[var(--g-tabbar-bg)] transition-all pb-safe min-h+safe-b-[calc(var(--g-tabbar-min-height))]', {
+        ...(tabbarMode ?? appSettingsStore.settings.tabbar.mode) === 'sticky' && {
           '-bottom-[var(--g-tabbar-height)]!': W,
         },
         // 边框
-        'shadow-[0_-1px_0_0_hsl(var(--border))]': tabbarBorder,
-        'before:shadow-[0_1px_0_0_hsl(var(--border))]': tabbarBorder && tabbarMask,
+        'shadow-[0_-1px_0_0_oklch(var(--border))]': tabbarBorder,
+        'before:shadow-[0_1px_0_0_oklch(var(--border))]': tabbarBorder && tabbarMask,
         'rounded-t-2xl overflow-hidden': tabbarRadius,
         'before:pointer-events-none before:absolute before:left-0 before:top-0 before:z-0 before:h-10 before:w-full before:from-transparent before:to-[var(--g-tabbar-bg)] before:bg-gradient-to-b before:opacity-0 before:transition-opacity before:content-empty before:-translate-y-full': tabbarMask,
         'before:opacity-100': tabbarMask && !arrivedState.bottom,
@@ -320,23 +326,23 @@ onBeforeRouteLeave((_to, _from, next) => {
       <div
         :class="cn('w-full empty:hidden',
                    {
-                     'shadow-[0_1px_0_0_hsl(var(--border))]': tabbarBorder,
+                     'shadow-[0_1px_0_0_oklch(var(--border))]': tabbarBorder,
                    })"
       >
         <slot name="tabbar-extra" />
       </div>
-      <div class="min-h-[var(--g-tabbar-min-height)] w-full flex-center px-4">
+      <div class="px-4 flex-center min-h-[var(--g-tabbar-min-height)] w-full">
         <slot name="tabbar">
           <template v-for="item in tabbarList" :key="JSON.stringify(item)">
             <RouterLink
-              class="flex flex-1 flex-col items-center text-[var(--g-tabbar-color)] no-underline transition-all" :class="{
+              class="text-[var(--g-tabbar-color)] no-underline flex flex-1 flex-col transition-all items-center" :class="{
                 'text-[var(--g-tabbar-active-color)]!': route.fullPath === item.path,
               }" :to="item.path" replace
             >
               <KmBadge
                 :value="item.badge ? typeof item.badge == 'boolean' ? item.badge : typeof item.badge == 'function' ? item.badge() : item.badge : false"
                 :variant="item.badgeVariant ? typeof item.badgeVariant == 'function' ? item.badgeVariant() : item.badgeVariant : undefined"
-                class="flex-1 flex-col items-center gap-[2px]"
+                class="flex-1 flex-col gap-[2px] items-center"
               >
                 <KmIcon v-if="getIcon(item)" :name="getIcon(item) ?? ''" :class="item.text ? 'text-6' : 'text-8'" />
                 <div v-if="item.text" class="text-xs">
@@ -360,15 +366,14 @@ onBeforeRouteLeave((_to, _from, next) => {
       }"
     >
       <div
-        v-if="(backTop ?? settingsStore.settings.app.enableBackTop) && y >= 200"
-        class="back-top size-12 flex-center cursor-pointer border rounded-full bg-background shadow-lg transition-all active:bg-border"
+        v-if="(backTop ?? appSettingsStore.settings.page.backTop) && y >= 200"
+        class="back-top border rounded-full bg-background flex-center size-12 cursor-pointer shadow-lg transition-all active:bg-border"
         :class="{
-          ...((tabbar ?? settingsStore.settings.tabbar.enable) && {
+          ...((tabbar ?? appSettingsStore.settings.tabbar.enable) && {
             'bottom+safe-[16px]': W,
             'bottom+safe-[calc(var(--g-tabbar-height)+16px)]!': !W,
           }),
-        }"
-        @click="handleBackTopClick"
+        }" @click="handleBackTopClick"
       >
         <KmIcon name="i-icon-park-outline:to-top-one" class="text-6" />
       </div>

@@ -11,6 +11,7 @@ declare module 'axios' {
   export interface AxiosRequestConfig {
     retry?: boolean
     retryCount?: number
+    fake?: boolean
   }
 }
 
@@ -22,12 +23,16 @@ const api = axios.create({
 
 api.interceptors.request.use(
   (request) => {
+    // 如果设置了 fake 属性，强制使用 fake 的 baseURL
+    if (request.fake) {
+      request.baseURL = '/fake/'
+    }
     // 全局拦截请求发送前提交的参数
-    const userStore = useUserStore()
+    const appAuthStore = useAppAuthStore()
     // 设置请求头
     if (request.headers) {
-      if (userStore.isLogin) {
-        request.headers.Token = userStore.token
+      if (appAuthStore.isLogin) {
+        request.headers.Token = appAuthStore.token
       }
     }
     // 是否将 POST 请求参数进行字符串化处理
@@ -43,7 +48,7 @@ api.interceptors.request.use(
 // 处理错误信息的函数
 function handleError(error: any) {
   if (error.status === 401) {
-    useUserStore().logout()
+    useAppAuthStore().logout()
     throw error
   }
   let message = error.message
@@ -79,7 +84,7 @@ api.interceptors.response.use(
       }
     }
     else {
-      useUserStore().logout()
+      useAppAuthStore().logout()
     }
     return Promise.resolve(response.data)
   },

@@ -4,7 +4,7 @@ definePage({
     title: 'pages.function.title',
   },
 })
-const page = usePage()
+const page = useAppPage()
 // 标题设置为「 测试标题 」
 function setCustomTitle() {
   page.setCustomTitle('测试标题')

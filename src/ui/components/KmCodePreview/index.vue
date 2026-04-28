@@ -22,7 +22,7 @@ function toggleCode() {
       <slot />
     </div>
     <KmCode v-show="showCode" :code="code.trim()" class="rounded-none" />
-    <div class="border-t p-2">
+    <div class="p-2 border-t">
       <KmButton
         variant="ghost"
         size="sm"

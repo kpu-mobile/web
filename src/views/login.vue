@@ -13,7 +13,7 @@ definePage({
 
 const router = useRouter()
 const route = useRoute()
-const userStore = useUserStore()
+const appAuthStore = useAppAuthStore()
 
 const redirect = ref(route.query.redirect?.toString() ?? '/')
 const loading = ref(false)
@@ -30,7 +30,7 @@ const form = useForm({
 })
 const onSubmit = form.handleSubmit((values) => {
   loading.value = true
-  userStore.login(values).then(() => {
+  appAuthStore.login(values).then(() => {
     router.replace(redirect.value)
   }).finally(() => {
     loading.value = false
@@ -46,27 +46,27 @@ function testAccount(account: string) {
 
 <template>
   <KmPageLayout :navbar="false" copyright>
-    <div class="mx-4 flex flex-1 flex-col justify-center gap-8">
+    <div class="mx-4 flex flex-1 flex-col gap-8 justify-center">
       <img src="@/assets/images/logo.png" class="mx-auto h-24 w-24">
       <form @submit="onSubmit">
-        <div class="mx-4 overflow-hidden border rounded-xl bg-card divide-y">
+        <div class="mx-4 border rounded-xl bg-card overflow-hidden divide-y">
           <FormField v-slot="{ componentField }" name="account">
             <FormItem class="p-1 space-y-0">
               <FormControl>
-                <KmInput type="text" placeholder="用户名" class="w-full border-none focus-visible:ring-0 focus-visible:ring-offset-0" v-bind="componentField" />
+                <KmInput type="text" placeholder="用户名" class="border-none w-full shadow-none has-[[data-slot=input-group-control]:focus-visible]:ring-0" input-class="shadow-none" v-bind="componentField" />
               </FormControl>
               <Transition enter-active-class="transition-opacity" enter-from-class="opacity-0" leave-active-class="transition-opacity" leave-to-class="opacity-0">
-                <FormMessage class="pb-2 pl-3 text-xs" />
+                <FormMessage class="text-xs pb-2 pl-3" />
               </Transition>
             </FormItem>
           </FormField>
           <FormField v-slot="{ componentField }" name="password">
             <FormItem class="p-1 space-y-0">
               <FormControl>
-                <KmInput type="password" placeholder="密码" class="w-full border-none focus-visible:ring-0 focus-visible:ring-offset-0" v-bind="componentField" />
+                <KmInput type="password" placeholder="密码" class="border-none w-full shadow-none has-[[data-slot=input-group-control]:focus-visible]:ring-0" input-class="shadow-none" v-bind="componentField" />
               </FormControl>
               <Transition enter-active-class="transition-opacity" enter-from-class="opacity-0" leave-active-class="transition-opacity" leave-to-class="opacity-0">
-                <FormMessage class="pb-2 pl-3 text-xs" />
+                <FormMessage class="text-xs pb-2 pl-3" />
               </Transition>
             </FormItem>
           </FormField>

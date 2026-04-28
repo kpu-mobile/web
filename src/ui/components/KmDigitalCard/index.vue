@@ -45,8 +45,8 @@ const trendIcon = computed(() => {
 <template>
   <KmCard :class="cn('w-full', props.class)" header-class="pb-2" footer-class="flex flex-col items-start gap-y-1">
     <template #header>
-      <div class="flex flex-row items-center justify-between gap-y-1.5 space-y-0">
-        <h3 class="flex-center-start gap-x-1 text-sm font-medium tracking-tight">
+      <div class="flex flex-row gap-y-1.5 items-center justify-between space-y-0">
+        <h3 class="text-sm tracking-tight font-medium flex-center-start gap-x-1">
           {{ title }}
         </h3>
         <template v-if="icon">
@@ -55,7 +55,7 @@ const trendIcon = computed(() => {
       </div>
     </template>
     <template #footer>
-      <div class="flex-center-start gap-x-1 text-2xl font-bold">
+      <div class="text-2xl font-bold flex-center-start gap-x-1">
         {{ digital }}
         <template v-if="trendIcon">
           <KmIcon :name="trendIcon" />

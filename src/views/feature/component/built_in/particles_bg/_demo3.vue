@@ -1,15 +1,15 @@
 <script setup lang="ts">
-const settingsStore = useSettingsStore()
+const appSettingsStore = useAppSettingsStore()
 </script>
 
 <template>
-  <div class="relative h-50 w-full flex flex-col items-center justify-center overflow-hidden bg-background p-2">
-    <span class="pointer-events-none whitespace-pre-wrap from-black to-gray-300/80 bg-gradient-to-b bg-clip-text text-center text-2xl text-transparent font-semibold leading-none dark:from-white dark:to-slate-900/10">
+  <div class="p-2 bg-background flex flex-col h-50 w-full items-center justify-center relative overflow-hidden">
+    <span class="text-2xl text-transparent leading-none font-semibold text-center pointer-events-none whitespace-pre-wrap from-black to-gray-300/80 bg-gradient-to-b bg-clip-text dark:from-white dark:to-slate-900/10">
       Kpu-mobile 真好用 !
     </span>
     <KmParticlesBg
-      class="absolute inset-0"
-      :color="settingsStore.currentColorScheme === 'dark' ? '#FFF' : '#000'"
+      class="inset-0 absolute"
+      :color="appSettingsStore.currentColorScheme === 'dark' ? '#FFF' : '#000'"
       :quantity="100"
       :ease="100"
       :staticity="10"

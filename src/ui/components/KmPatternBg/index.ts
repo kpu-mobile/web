@@ -43,11 +43,11 @@ export const patternBackgroundVariants = cva('relative text-clip', {
   variants: {
     variant: {
       [PATTERN_BACKGROUND_VARIANT.Grid]:
-        'bg-[linear-gradient(to_right,hsl(var(--foreground)/0.3)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.3)_1px,transparent_1px)]',
+        'bg-[linear-gradient(to_right,oklch(var(--foreground)/0.3)_1px,transparent_1px),linear-gradient(to_bottom,oklch(var(--foreground)/0.3)_1px,transparent_1px)]',
       [PATTERN_BACKGROUND_VARIANT.Dot]:
-        'bg-[radial-gradient(hsl(var(--foreground)/0.3)_1px,transparent_1px)]',
+        'bg-[radial-gradient(oklch(var(--foreground)/0.3)_1px,transparent_1px)]',
       [PATTERN_BACKGROUND_VARIANT.BigDot]:
-        'bg-[radial-gradient(hsl(var(--foreground)/0.3)_3px,transparent_3px)]',
+        'bg-[radial-gradient(oklch(var(--foreground)/0.3)_3px,transparent_3px)]',
     },
     size: {
       xs: 'bg-[size:8px_8px]',

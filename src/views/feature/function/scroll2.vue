@@ -10,7 +10,7 @@ const router = useRouter()
 
 <template>
   <KmPageLayout navbar navbar-start-side="back">
-    <div class="h-full flex flex-col gap-4 p-4">
+    <div class="p-4 flex flex-col gap-4 h-full">
       现在你可以返回上一页查看效果。
       <KmButton @click="router.back()">
         返回

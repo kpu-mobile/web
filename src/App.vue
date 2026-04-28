@@ -6,10 +6,10 @@ import Provider from './ui/provider/index.vue'
 
 const route = useRoute()
 
-const settingsStore = useSettingsStore()
-const keepAliveStore = useKeepAliveStore()
+const appSettingsStore = useAppSettingsStore()
+const appKeepAliveStore = useAppKeepAliveStore()
 
-const { auth } = useAuth()
+const { auth } = useAppAuth()
 
 const isAuth = computed(() => {
   return route.matched.every((item) => {
@@ -17,19 +17,19 @@ const isAuth = computed(() => {
   })
 })
 const { t, te, locale } = useI18n()
-watch(() => settingsStore.lang, () => {
-  locale.value = settingsStore.lang
+watch(() => appSettingsStore.lang, () => {
+  locale.value = appSettingsStore.lang
 })
 
 watch([
-  () => settingsStore.settings.app.enableDynamicTitle,
-  () => settingsStore.title,
-  () => settingsStore.customTitleList,
-  () => settingsStore.lang,
+  () => appSettingsStore.settings.app.dynamicTitle,
+  () => appSettingsStore.title,
+  () => appSettingsStore.customTitleList,
+  () => appSettingsStore.lang,
 ], () => {
   nextTick(() => {
-    if (settingsStore.settings.app.enableDynamicTitle && settingsStore.title) {
-      const title = (settingsStore.customTitleList.find(d => d.fullPath === route.fullPath)?.title) || (settingsStore.title && (te(settingsStore.title) ? t(settingsStore.title) : settingsStore.title))
+    if (appSettingsStore.settings.app.dynamicTitle && appSettingsStore.title) {
+      const title = (appSettingsStore.customTitleList.find(d => d.fullPath === route.fullPath)?.title) || (appSettingsStore.title && (te(appSettingsStore.title) ? t(appSettingsStore.title) : appSettingsStore.title))
       document.title = title ?? import.meta.env.VITE_APP_TITLE
     }
     else {
@@ -41,9 +41,9 @@ watch([
   deep: true,
 })
 watch(
-  () => settingsStore.lang,
+  () => appSettingsStore.lang,
   () => {
-    switch (settingsStore.lang) {
+    switch (appSettingsStore.lang) {
       case 'zh-cn':
         dayjs.locale('zh-cn')
         break
@@ -62,10 +62,10 @@ const enableAppSetting = import.meta.env.VITE_APP_SETTING
 <template>
   <Provider>
     <RouterView v-slot="{ Component }">
-      <Transition :name="settingsStore.settings.mainPage.enableTransition ? settingsStore.settings.mainPage.transitionMode : ''" mode="out-in" appear>
-        <KeepAlive :include="keepAliveStore.list">
+      <Transition :name="appSettingsStore.settings.page.transitionMode" mode="out-in" appear>
+        <KeepAlive :include="appKeepAliveStore.list">
           <component :is="Component" v-if="isAuth" :key="route.fullPath" />
-          <KmNotAllowed v-else />
+          <AppNotAllowed v-else />
         </KeepAlive>
       </Transition>
     </RouterView>
@@ -73,7 +73,7 @@ const enableAppSetting = import.meta.env.VITE_APP_SETTING
       <div class="app-setting" @click="eventBus.emit('global-app-setting-toggle')">
         <KmIcon name="i-uiw:setting-o" class="icon" />
       </div>
-      <KmAppSetting />
+      <AppSetting />
     </template>
     <KmToast />
   </Provider>

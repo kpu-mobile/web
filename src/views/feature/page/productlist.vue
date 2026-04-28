@@ -48,7 +48,7 @@ const list = ref([{
     >
       <div
         v-for="(item, index) in list" :key="index"
-        class="relative w-full px-2 py-4 text-center text-xs" :class="{
+        class="text-xs px-2 py-4 text-center w-full relative" :class="{
           'active-item bg-background': n === index,
           'cursor-pointer': n !== index,
         }"
@@ -59,21 +59,21 @@ const list = ref([{
         </div>
       </div>
     </KmScrollArea>
-    <div class="product-list ms-[80px] flex flex-col gap-4 of-auto overscroll-none bg-background p-4">
+    <div class="product-list ms-[80px] p-4 overscroll-none bg-background flex flex-col gap-4 of-auto">
       <div v-for="i in 20" :key="i" class="flex gap-2">
         <img
           src="https://fakeimg.pl/80/282828/?retina=1"
-          class="block h-[80px] w-[80px]"
+          class="h-[80px] w-[80px] block"
         >
         <div class="flex flex-col gap-1">
-          <div class="line-clamp-2 font-bold leading-tight">
+          <div class="leading-tight font-bold line-clamp-2">
             大红番茄500g，大红番茄500g，大红番茄500g
           </div>
           <div class="text-xs c-stone">
             大山里的美味 | 番茄味浓郁
           </div>
           <div class="flex items-baseline justify-between">
-            <div class="flex items-baseline gap-2">
+            <div class="flex gap-2 items-baseline">
               <div class="text-xs c-red font-bold">
                 ￥<span class="text-lg">8</span>.99
               </div>
@@ -81,7 +81,7 @@ const list = ref([{
                 ￥12.99
               </div>
             </div>
-            <div class="flex-center rounded-md bg-red p-1 c-white">
+            <div class="c-white p-1 rounded-md bg-red flex-center">
               <KmIcon name="i-typcn:plus" />
             </div>
           </div>
@@ -107,7 +107,7 @@ const list = ref([{
       height: 20px;
       content: "";
       border-radius: 100%;
-      box-shadow: 0 0 0 20px hsl(var(--background));
+      box-shadow: 0 0 0 20px oklch(var(--background));
       transition: box-shadow 0.3s;
     }
 

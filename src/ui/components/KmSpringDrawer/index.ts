@@ -57,7 +57,7 @@ export function useKmModal() {
     const container = document.createElement('div')
     const app = createApp({
       render() {
-        return h(Modal, Object.assign({
+        return h(Modal, {
           modelValue: true,
           icon: 'info',
           closable: false,
@@ -69,7 +69,8 @@ export function useKmModal() {
           onClosed: () => {
             app.unmount()
           },
-        }, options), () => options.content)
+          ...options,
+        }, () => options.content)
       },
     })
     app.mount(container)
@@ -78,7 +79,7 @@ export function useKmModal() {
     const container = document.createElement('div')
     const app = createApp({
       render() {
-        return h(Modal, Object.assign({
+        return h(Modal, {
           modelValue: true,
           icon: 'success',
           closable: false,
@@ -90,7 +91,8 @@ export function useKmModal() {
           onClosed: () => {
             app.unmount()
           },
-        }, options), () => options.content)
+          ...options,
+        }, () => options.content)
       },
     })
     app.mount(container)
@@ -99,7 +101,7 @@ export function useKmModal() {
     const container = document.createElement('div')
     const app = createApp({
       render() {
-        return h(Modal, Object.assign({
+        return h(Modal, {
           modelValue: true,
           icon: 'warning',
           closable: false,
@@ -111,7 +113,8 @@ export function useKmModal() {
           onClosed: () => {
             app.unmount()
           },
-        }, options), () => options.content)
+          ...options,
+        }, () => options.content)
       },
     })
     app.mount(container)
@@ -120,7 +123,7 @@ export function useKmModal() {
     const container = document.createElement('div')
     const app = createApp({
       render() {
-        return h(Modal, Object.assign({
+        return h(Modal, {
           modelValue: true,
           icon: 'error',
           closable: false,
@@ -132,7 +135,8 @@ export function useKmModal() {
           onClosed: () => {
             app.unmount()
           },
-        }, options), () => options.content)
+          ...options,
+        }, () => options.content)
       },
     })
     app.mount(container)
@@ -141,7 +145,7 @@ export function useKmModal() {
     const container = document.createElement('div')
     const app = createApp({
       render() {
-        return h(Modal, Object.assign({
+        return h(Modal, {
           modelValue: true,
           closable: false,
           border: false,
@@ -153,7 +157,8 @@ export function useKmModal() {
           onClosed: () => {
             app.unmount()
           },
-        }, options), () => options.content)
+          ...options,
+        }, () => options.content)
       },
     })
     app.mount(container)

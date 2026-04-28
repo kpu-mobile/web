@@ -8,7 +8,7 @@ definePage({
 
 <template>
   <KmPageLayout navbar navbar-start-side="back">
-    <div class="flex flex-col gap-4 p-4">
+    <div class="p-4 flex flex-col gap-4">
       <KmPageMain class="my-0">
         自定义字体需要下载字体文件，不建议在非英文环境中使用。以下为框架预设字体：
       </KmPageMain>
