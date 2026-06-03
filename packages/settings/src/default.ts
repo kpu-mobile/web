@@ -1,5 +1,5 @@
 import type { RequiredDeep } from 'type-fest'
-import type { SettingsOptions } from '../types'
+import type { SettingsOptions } from './types'
 
 const settingsDefault: RequiredDeep<SettingsOptions> = {
   app: {
@@ -12,6 +12,8 @@ const settingsDefault: RequiredDeep<SettingsOptions> = {
   },
   theme: {
     sync: true,
+    baseColorLight: 'neutral',
+    baseColorDark: 'neutral',
     light: 'default',
     dark: 'default',
     colorScheme: 'light',

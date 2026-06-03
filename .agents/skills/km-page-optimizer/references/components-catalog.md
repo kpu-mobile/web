@@ -68,7 +68,7 @@
 
 ### KmToast
 **用途**: 轻提示消息（成功/错误/警告）
-**编程式用法**: `import { kmToast } from '@/ui/components/KmToast'`，然后 `kmToast.success('操作成功')`
+**编程式用法**: `import { kmToast } from '@/ui/components/KmToast'`，然后 `useKmToast().success('操作成功')`
 
 ### KmLoading
 **用途**: 加载遮罩

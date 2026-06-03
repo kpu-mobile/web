@@ -28,7 +28,6 @@ declare global {
   const isReadonly: typeof import('vue').isReadonly
   const isRef: typeof import('vue').isRef
   const isShallow: typeof import('vue').isShallow
-  const kmToast: typeof import('@kpu-mobile/components').kmToast
   const mapActions: typeof import('pinia').mapActions
   const mapGetters: typeof import('pinia').mapGetters
   const mapState: typeof import('pinia').mapState
@@ -82,6 +81,7 @@ declare global {
   const useKmDrawer: typeof import('@kpu-mobile/components').useKmDrawer
   const useKmLoading: typeof import('@kpu-mobile/components').useKmLoading
   const useKmModal: typeof import('@kpu-mobile/components').useKmModal
+  const useKmToast: typeof import('@kpu-mobile/components').useKmToast
   const useLink: typeof import('vue-router/auto').useLink
   const useModel: typeof import('vue').useModel
   const useRoute: typeof import('vue-router').useRoute

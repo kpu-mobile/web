@@ -17,7 +17,6 @@ declare global {
   const definePage: typeof import('vue-router/experimental').definePage
   const defineStore: typeof import('pinia').defineStore
   const effectScope: typeof import('vue').effectScope
-  const kmToast: typeof import('@kpu-mobile/components').kmToast
   const getActivePinia: typeof import('pinia').getActivePinia
   const getCurrentInstance: typeof import('vue').getCurrentInstance
   const getCurrentScope: typeof import('vue').getCurrentScope
@@ -74,13 +73,15 @@ declare global {
   const useAppKeepAliveStore: typeof import('../store/modules/app/keepAlive').useAppKeepAliveStore
   const useAppPage: typeof import('../composables/app/page').useAppPage
   const useAppSettingsStore: typeof import('../store/modules/app/settings').useAppSettingsStore
+  const useAppWatermarkStore: typeof import('../store/modules/app/watermark').useAppWatermarkStore
   const useAttrs: typeof import('vue').useAttrs
   const useCssModule: typeof import('vue').useCssModule
   const useCssVars: typeof import('vue').useCssVars
+  const useId: typeof import('vue').useId
   const useKmDrawer: typeof import('@kpu-mobile/components').useKmDrawer
   const useKmLoading: typeof import('@kpu-mobile/components').useKmLoading
   const useKmModal: typeof import('@kpu-mobile/components').useKmModal
-  const useId: typeof import('vue').useId
+  const useKmToast: typeof import('@kpu-mobile/components').useKmToast
   const useLink: typeof import('vue-router/auto').useLink
   const useModel: typeof import('vue').useModel
   const useRoute: typeof import('vue-router').useRoute

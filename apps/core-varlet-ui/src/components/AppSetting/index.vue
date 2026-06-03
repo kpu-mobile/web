@@ -17,7 +17,7 @@
 
 <script setup lang="ts">
 import { setSettings } from '@kpu-mobile/settings'
-import themes from '@kpu-mobile/themes'
+import { BASE_COLORS, THEMES } from '@kpu-mobile/themes'
 import { useClipboard } from '@vueuse/core'
 import { useI18n } from 'vue-i18n'
 import { toast } from 'vue-sonner'
@@ -27,17 +27,10 @@ import eventBus from '@/utils/eventBus'
 defineOptions({
   name: 'AppSetting',
 })
-const { t } = useI18n()
+
 const appSettingsStore = useAppSettingsStore()
 const settingsDefault = setSettings({})
-const themeList = computed(() => {
-  return Object.keys(themes).map((key) => {
-    return {
-      label: key,
-      value: (themes as any)[key][appSettingsStore.currentColorScheme || 'light'],
-    }
-  })
-})
+const { t } = useI18n()
 const isShow = ref(false)
 
 onMounted(() => {
@@ -45,6 +38,61 @@ onMounted(() => {
     isShow.value = !isShow.value
   })
 })
+
+const currentScheme = computed(() => appSettingsStore.currentColorScheme ?? 'light')
+
+const currentBaseColorName = computed(() =>
+  currentScheme.value === 'dark'
+    ? appSettingsStore.settings.theme.baseColorDark
+    : appSettingsStore.settings.theme.baseColorLight,
+)
+
+const currentBaseTheme = computed(() =>
+  BASE_COLORS[currentBaseColorName.value]?.[currentScheme.value]
+  ?? BASE_COLORS.neutral[currentScheme.value],
+)
+
+const themeColorList = computed(() =>
+  Object.keys(THEMES).map((key) => {
+    const theme: any = THEMES[key as keyof typeof THEMES][currentScheme.value]
+    return {
+      label: key as keyof typeof THEMES,
+      value: (THEMES)[key as keyof typeof THEMES][currentScheme.value],
+      preview: theme['--primary'] ?? currentBaseTheme.value['--primary'],
+    }
+  }),
+)
+
+const baseColorList = computed(() =>
+  Object.keys(BASE_COLORS).map(key => ({
+    label: key as keyof typeof BASE_COLORS,
+    value: BASE_COLORS[key as keyof typeof BASE_COLORS][currentScheme.value],
+  })),
+)
+
+const currentThemeColorName = computed(() =>
+  currentScheme.value === 'dark'
+    ? appSettingsStore.settings.theme.dark
+    : appSettingsStore.settings.theme.light,
+)
+
+function setBaseColor(name: keyof typeof BASE_COLORS) {
+  if (currentScheme.value === 'dark') {
+    appSettingsStore.settings.theme.baseColorDark = name
+  }
+  else {
+    appSettingsStore.settings.theme.baseColorLight = name
+  }
+}
+
+function setThemeColor(name: keyof typeof THEMES) {
+  if (currentScheme.value === 'dark') {
+    appSettingsStore.settings.theme.dark = name
+  }
+  else {
+    appSettingsStore.settings.theme.light = name
+  }
+}
 
 const themeRadius = computed<number[]>({
   get() {
@@ -54,6 +102,7 @@ const themeRadius = computed<number[]>({
     appSettingsStore.settings.theme.radius = value[0]
   },
 })
+
 const appDefaultLang = computed({
   get() {
     return appSettingsStore.settings.app.defaultLang === '' ? '-' : appSettingsStore.settings.app.defaultLang
@@ -62,6 +111,7 @@ const appDefaultLang = computed({
     appSettingsStore.settings.app.defaultLang = value === '-' ? '' : value
   },
 })
+
 const { copy, copied, isSupported } = useClipboard()
 
 watch(copied, (val) => {
@@ -106,24 +156,41 @@ function diffTwoObj(originalObj: Record<string, any>, diffObj: Record<string, an
 
 <template>
   <KmModal
-    v-model="isShow" :title="t('titleSettings')" :description="t('description')" :footer="isSupported" :destroy-on-close="false"
+    v-model="isShow" title="应用配置" description="在生产环境中应关闭该模块"
+    :footer="isSupported" :destroy-on-close="false"
     content-class="bg-[var(--g-bg)] transition-background-color"
   >
     <div>
       <KmPageMain
         title="主题" class="m-0 mb-4 break-inside-avoid light:border-none"
-        title-class="pb-0 border-none font-bold text-base" main-class="space-y-4"
+        title-class="font-bold text-base" main-class="space-y-4"
       >
-        <div class="themes">
-          <div
-            v-for="item in themeList" :key="item.label" class="theme" :class="[{
-              active: appSettingsStore.currentColorScheme === 'dark'
-                ? appSettingsStore.settings.theme.dark === item.label
-                : appSettingsStore.settings.theme.light === item.label,
-            }]"
-            @click="appSettingsStore.currentColorScheme === 'dark' ? appSettingsStore.settings.theme.dark = item.label : appSettingsStore.settings.theme.light = item.label"
-          >
-            <div class="content" :style="{ backgroundColor: `oklch(${item.value['--primary']})` }" />
+        <div class="space-y-2">
+          <div class="text-sm">
+            基础色
+          </div>
+          <div class="themes themes-base">
+            <KmButton
+              v-for="item in baseColorList" :key="item.label" variant="outline"
+              class="theme" :class="[{ active: currentBaseColorName === item.label }]"
+              @click="setBaseColor(item.label)"
+            >
+              <div class="content" :style="{ backgroundColor: `oklch(${item.value['--ring']})` }" />
+            </KmButton>
+          </div>
+        </div>
+        <div class="space-y-2">
+          <div class="text-sm">
+            主题色
+          </div>
+          <div class="themes themes-theme">
+            <KmButton
+              v-for="item in themeColorList" :key="item.label" variant="outline"
+              class="theme" :class="[{ active: currentThemeColorName === item.label }]"
+              @click="setThemeColor(item.label)"
+            >
+              <div class="content" :style="{ backgroundColor: `oklch(${item.preview})` }" />
+            </KmButton>
           </div>
         </div>
         <div class="setting-item">
@@ -137,7 +204,8 @@ function diffTwoObj(originalObj: Record<string, any>, diffObj: Record<string, an
                 { icon: 'i-ri:moon-line', value: 'dark' },
                 { icon: 'i-codicon:color-mode', value: '' },
               ]" :key="index"
-              :variant="appSettingsStore.settings.theme.colorScheme === item.value ? 'default' : 'outline'" size="sm"
+              :variant="appSettingsStore.settings.theme.colorScheme === item.value ? 'default' : 'outline'"
+              size="sm"
               :class="{ 'z-1': appSettingsStore.settings.theme.colorScheme === item.value }"
               @click="appSettingsStore.settings.theme.colorScheme = (item.value as any)"
             >
@@ -151,7 +219,6 @@ function diffTwoObj(originalObj: Record<string, any>, diffObj: Record<string, an
           </div>
           <KmSwitch v-model="appSettingsStore.settings.theme.sync" />
         </div>
-
         <div class="setting-item">
           <div class="label">
             圆角
@@ -165,129 +232,131 @@ function diffTwoObj(originalObj: Record<string, any>, diffObj: Record<string, an
           <KmSwitch v-model="appSettingsStore.settings.theme.colorAmblyopia" />
         </div>
       </KmPageMain>
+      <KmPageMain
+        title="页面" class="m-0 mb-4 break-inside-avoid light:border-none"
+        title-class="font-bold text-base" main-class="space-y-4"
+      >
+        <div class="transition-mode">
+          <div
+            class="mode" :class="[{ active: appSettingsStore.settings.page.transitionMode === '' }]"
+            @click="appSettingsStore.settings.page.transitionMode = ''"
+          />
+          <div
+            class="mode mode-fade" :class="[{ active: appSettingsStore.settings.page.transitionMode === 'fade' }]"
+            @click="appSettingsStore.settings.page.transitionMode = 'fade'"
+          />
+          <div
+            class="mode mode-slide-left" :class="[{ active: appSettingsStore.settings.page.transitionMode === 'slide-left' }]"
+            @click="appSettingsStore.settings.page.transitionMode = 'slide-left'"
+          />
+          <div
+            class="mode mode-slide-right" :class="[{ active: appSettingsStore.settings.page.transitionMode === 'slide-right' }]"
+            @click="appSettingsStore.settings.page.transitionMode = 'slide-right'"
+          />
+          <div
+            class="mode mode-slide-top" :class="[{ active: appSettingsStore.settings.page.transitionMode === 'slide-top' }]"
+            @click="appSettingsStore.settings.page.transitionMode = 'slide-top'"
+          />
+          <div
+            class="mode mode-slide-bottom" :class="[{ active: appSettingsStore.settings.page.transitionMode === 'slide-bottom' }]"
+            @click="appSettingsStore.settings.page.transitionMode = 'slide-bottom'"
+          />
+        </div>
+        <div class="setting-item">
+          <div class="label">
+            进度条
+          </div>
+          <KmSwitch v-model="appSettingsStore.settings.page.progress" />
+        </div>
+        <div class="setting-item">
+          <div class="label">
+            返回顶部
+          </div>
+          <KmSwitch v-model="appSettingsStore.settings.page.backTop" />
+        </div>
+      </KmPageMain>
+      <KmPageMain
+        title="版权" class="m-0 mb-4 break-inside-avoid light:border-none"
+        title-class="font-bold text-base" main-class="space-y-4"
+      >
+        <div class="setting-item">
+          <div class="label">
+            启用
+          </div>
+          <KmSwitch v-model="appSettingsStore.settings.copyright.enable" />
+        </div>
+        <div class="setting-item">
+          <div class="label">
+            日期
+          </div>
+          <KmInput v-model="appSettingsStore.settings.copyright.dates" :disabled="!appSettingsStore.settings.copyright.enable" />
+        </div>
+        <div class="setting-item">
+          <div class="label">
+            公司
+          </div>
+          <KmInput v-model="appSettingsStore.settings.copyright.company" :disabled="!appSettingsStore.settings.copyright.enable" />
+        </div>
+        <div class="setting-item">
+          <div class="label">
+            网址
+          </div>
+          <KmInput v-model="appSettingsStore.settings.copyright.website" :disabled="!appSettingsStore.settings.copyright.enable" />
+        </div>
+      </KmPageMain>
+      <KmPageMain
+        title="应用" class="m-0 mb-4 break-inside-avoid light:border-none"
+        title-class="font-bold text-base" main-class="space-y-4"
+      >
+        <div class="setting-item">
+          <div class="label">
+            启用权限
+          </div>
+          <KmSwitch v-model="appSettingsStore.settings.app.auth" />
+        </div>
+        <div class="setting-item">
+          <div class="label">
+            动态标题
+          </div>
+          <KmSwitch v-model="appSettingsStore.settings.app.dynamicTitle" />
+        </div>
+        <div class="setting-item">
+          <div class="label">
+            水印
+          </div>
+          <KmSwitch v-model="appSettingsStore.settings.app.watermark" />
+        </div>
+        <div class="setting-item">
+          <div class="label">
+            哀悼模式
+          </div>
+          <KmSwitch v-model="appSettingsStore.settings.app.rip" />
+        </div>
+        <div class="setting-item">
+          <div class="label">
+            默认语言
+          </div>
+          <KmSelect
+            v-model="appDefaultLang"
+            :options="[
+              { label: '跟随系统', value: '-' },
+              ...Object.keys(localesName).map(key => ({
+                label: localesName[key].label,
+                value: key,
+              })),
+            ]"
+          />
+        </div>
+      </KmPageMain>
     </div>
-    <KmPageMain
-      title="页面" class="m-0 mb-4 break-inside-avoid light:border-none"
-      title-class="pb-0 border-none font-bold text-base" main-class="space-y-4"
-    >
-      <div class="transition-mode">
-        <div
-          class="mode" :class="[{ active: appSettingsStore.settings.page.transitionMode === '' }]"
-          @click="appSettingsStore.settings.page.transitionMode = ''"
-        />
-        <div class="mode mode-fade" :class="{ active: appSettingsStore.settings.page.transitionMode === 'fade' }" @click="appSettingsStore.settings.page.transitionMode = 'fade'" />
-        <div class="mode mode-slide-left" :class="{ active: appSettingsStore.settings.page.transitionMode === 'slide-left' }" @click="appSettingsStore.settings.page.transitionMode = 'slide-left'" />
-        <div class="mode mode-slide-right" :class="{ active: appSettingsStore.settings.page.transitionMode === 'slide-right' }" @click="appSettingsStore.settings.page.transitionMode = 'slide-right'" />
-        <div class="mode mode-slide-top" :class="{ active: appSettingsStore.settings.page.transitionMode === 'slide-top' }" @click="appSettingsStore.settings.page.transitionMode = 'slide-top'" />
-        <div class="mode mode-slide-bottom" :class="{ active: appSettingsStore.settings.page.transitionMode === 'slide-bottom' }" @click="appSettingsStore.settings.page.transitionMode = 'slide-bottom'" />
-      </div>
-      <div class="setting-item">
-        <div class="label">
-          进度条
-        </div>
-        <KmSwitch v-model="appSettingsStore.settings.page.progress" />
-      </div>
-      <div class="setting-item">
-        <div class="label">
-          返回顶部
-        </div>
-        <KmSwitch v-model="appSettingsStore.settings.page.backTop" />
-      </div>
-    </KmPageMain>
-
-    <KmPageMain
-      title="版权" class="m-0 mb-4 break-inside-avoid light:border-none"
-      title-class="pb-0 border-none font-bold text-base" main-class="space-y-4"
-    >
-      <div class="setting-item">
-        <div class="label">
-          启用
-        </div>
-        <KmSwitch v-model="appSettingsStore.settings.copyright.enable" />
-      </div>
-      <div class="setting-item">
-        <div class="label">
-          日期
-        </div>
-        <KmInput
-          v-model="appSettingsStore.settings.copyright.dates"
-          :disabled="!appSettingsStore.settings.copyright.enable"
-        />
-      </div>
-      <div class="setting-item">
-        <div class="label">
-          公司
-        </div>
-        <KmInput
-          v-model="appSettingsStore.settings.copyright.company"
-          :disabled="!appSettingsStore.settings.copyright.enable"
-        />
-      </div>
-      <div class="setting-item">
-        <div class="label">
-          网址
-        </div>
-        <KmInput
-          v-model="appSettingsStore.settings.copyright.website"
-          :disabled="!appSettingsStore.settings.copyright.enable"
-        />
-      </div>
-    </KmPageMain>
-    <KmPageMain
-      title="应用" class="m-0 mb-4 break-inside-avoid light:border-none"
-      title-class="pb-0 border-none font-bold text-base" main-class="space-y-4"
-    >
-      <div class="setting-item">
-        <div class="label">
-          启用权限
-        </div>
-        <KmSwitch v-model="appSettingsStore.settings.app.auth" />
-      </div>
-      <div class="setting-item">
-        <div class="label">
-          哀悼模式
-        </div>
-        <KmSwitch v-model="appSettingsStore.settings.app.rip" />
-      </div>
-      <div class="setting-item">
-        <div class="label">
-          动态标题
-        </div>
-        <KmSwitch v-model="appSettingsStore.settings.app.dynamicTitle" />
-      </div>
-      <div class="setting-item">
-        <div class="label">
-          水印
-        </div>
-        <KmSwitch v-model="appSettingsStore.settings.app.watermark" />
-      </div>
-      <div class="setting-item">
-        <div class="label">
-          默认语言
-        </div>
-        <KmSelect
-          v-model="appDefaultLang" :options="[{
-            label: '跟随系统',
-            value: '-',
-          }, ...Object.keys(localesName).map(item => {
-            return {
-              label: localesName[item].label,
-              value: item,
-            }
-          })]"
-        />
-      </div>
-    </KmPageMain>
-
     <template #footer>
       <div class="w-full">
-        <i18n-t tag="div" keypath="warning" class="text-sm/6 c-rose mb-2 px-4 py-2 text-center rounded-lg bg-rose/20">
+        <i18n-t keypath="warning" tag="div" class="text-sm/6 c-rose mb-2 px-4 py-2 text-center rounded-lg bg-rose/20">
           <template #path>
-            <code
-              class="text-sm font-mono font-semibold px-[0.3rem] py-[0.2rem] rounded bg-muted relative"
-            >src/settings.ts</code>
+            <code class="text-sm font-mono font-semibold px-[0.3rem] py-[0.2rem] rounded bg-muted relative">src/settings.ts</code>
           </template>
         </i18n-t>
+
         <KmButton class="w-full" @click="handleCopy">
           <KmIcon :name="copied ? 'i-tabler:clipboard-check' : 'i-tabler:clipboard'" class="size-5" />
           {{ t('copy') }}
@@ -307,21 +376,31 @@ function diffTwoObj(originalObj: Record<string, any>, diffObj: Record<string, an
 }
 
 .themes {
-  --uno: grid grid-cols-4 gap-4;
+  --uno: grid gap-2;
+
+  &&-base {
+    --uno: grid-cols-7;
+  }
+
+  &&-theme {
+    --uno: grid-cols-6;
+  }
 
   .theme {
-    --uno: flex-center-center w-full h-12 cursor-pointer rounded-lg ring-1 ring-border transition;
+    padding-inline: 0;
+
+    --uno: p-inline-0 place-self-center w-full h-9 min-w-0;
 
     &.active {
       --uno: ring-primary ring-2;
 
       .content {
-        --uno: rotate--0;
+        --uno: w-5;
       }
     }
 
     .content {
-      --uno: w-6 h-4 rounded-1/2 -rotate-45 transition;
+      --uno: w-3.5 h-3.5 rounded-1/2 -rotate-45 transition;
     }
   }
 }

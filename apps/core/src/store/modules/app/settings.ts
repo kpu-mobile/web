@@ -1,6 +1,5 @@
 import type { ThemeSettings } from '@kpu-mobile/settings'
 import type { RouteLocationNormalized } from 'vue-router'
-
 import { getLocales, localesName } from '@/locales'
 import settingsDefault from '@/settings'
 
@@ -28,7 +27,14 @@ export const useAppSettingsStore = defineStore(
       immediate: true,
     })
     const currentColorScheme = ref<Exclude<ThemeSettings['colorScheme'], ''>>()
-    watch([() => settings.value.theme.colorScheme, () => settings.value.theme.light, () => settings.value.theme.dark, () => settings.value.theme.sync], updateTheme, {
+    watch([
+      () => settings.value.theme.colorScheme,
+      () => settings.value.theme.baseColorLight,
+      () => settings.value.theme.baseColorDark,
+      () => settings.value.theme.light,
+      () => settings.value.theme.dark,
+      () => settings.value.theme.sync,
+    ], updateTheme, {
       immediate: true,
     })
     function updateTheme() {
@@ -40,20 +46,27 @@ export const useAppSettingsStore = defineStore(
       switch (colorScheme) {
         case 'light':
           document.documentElement.classList.remove('dark')
+          document.documentElement.setAttribute('color-scheme', '')
+          document.documentElement.setAttribute('data-base-color', settings.value.theme.baseColorLight)
           document.documentElement.setAttribute('data-theme', settings.value.theme.light)
           if (settings.value.theme.sync) {
+            settings.value.theme.baseColorDark = settings.value.theme.baseColorLight
             settings.value.theme.dark = settings.value.theme.light
           }
           break
         case 'dark':
           document.documentElement.classList.add('dark')
+          document.documentElement.setAttribute('color-scheme', '')
+          document.documentElement.setAttribute('data-base-color', settings.value.theme.baseColorDark)
           document.documentElement.setAttribute('data-theme', settings.value.theme.dark)
           if (settings.value.theme.sync) {
+            settings.value.theme.baseColorLight = settings.value.theme.baseColorDark
             settings.value.theme.light = settings.value.theme.dark
           }
           break
       }
     }
+
     watch(() => settings.value.theme.radius, (val) => {
       document.documentElement.style.removeProperty('--radius')
       document.documentElement.style.setProperty('--radius', `${val}rem`)

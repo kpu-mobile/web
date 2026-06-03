@@ -1,62 +1,75 @@
 import type { ImportsMap } from 'unplugin-auto-import/types'
 import type { ComponentResolver, TypeImport } from 'unplugin-vue-components'
+import { createRequire } from 'node:module'
 
 const COMPONENT_PREFIX = 'Km'
-const PACKAGE_NAME = '@kpu-mobile/components'
+const PACKAGE_NAME = createRequire(import.meta.url)('./package.json').name
 
-const COMPONENT_NAMES = [
-  'KmAnimatedCountTo',
-  'KmAnimatedCountToGroup',
+const BASIC_COMPONENT_NAMES = [
+  'KmAlert',
   'KmAvatar',
   'KmBadge',
-  'KmBorderBeam',
-  'KmBlurReveal',
   'KmButton',
   'KmButtonGroup',
-  'KmFlipWords',
-  'KmGradientButton',
   'KmCard',
   'KmCheckbox',
-  'KmEmpty',
-  'KmCode',
-  'KmCodePreview',
-  'KmCountTo',
-  'KmDigitalCard',
+  'KmCheckboxGroup',
   'KmDivider',
   'KmDrawer',
   'KmIcon',
   'KmInput',
+  'KmLabel',
   'KmLoading',
-  'KmMarquee',
   'KmModal',
-  'KmMultiStepLoader',
   'KmPageMain',
+  'KmRadioGroup',
+  'KmScrollArea',
+  'KmSelect',
+  'KmSlider',
+  'KmSwitch',
+  'KmTabs',
+  'KmToast',
+  'KmTrend',
+] as const
+
+const PRO_COMPONENT_NAMES = [
+  'KmAnimatedCountToGroup',
+  'KmAnimatedCountTo',
+  'KmBlurReveal',
+  'KmBorderBeam',
+  'KmCodePreview',
+  'KmCode',
+  'KmCountTo',
+  'KmDigitalCard',
+  'KmEmpty',
+  'KmFlipWords',
+  'KmGradientButton',
+  'KmMarquee',
+  'KmMultiStepLoader',
   'KmParticlesBg',
   'KmPatternBg',
   'KmQrcode',
   'KmScratchOff',
-  'KmScrollArea',
   'KmScrollingText',
-  'KmSelect',
-  'KmSlider',
   'KmSmoothSwipe',
   'KmSparklesText',
   'KmSparkline',
   'KmSpringDrawer',
-  'KmSwitch',
-  'KmTabs',
   'KmTextHighlight',
   'KmTimeAgo',
   'KmTimeline',
-  'KmToast',
-  'KmTrend',
+] as const
+
+const COMPONENT_NAMES = [
+  ...BASIC_COMPONENT_NAMES,
+  ...PRO_COMPONENT_NAMES,
 ] as const
 
 const AUTO_IMPORT_NAMES = [
   'useKmDrawer',
   'useKmLoading',
   'useKmModal',
-  'kmToast',
+  'useKmToast',
 ] as const
 
 export const AutoImports: ImportsMap = {

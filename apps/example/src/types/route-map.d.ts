@@ -58,9 +58,9 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
-    '/feature/component/built_in/animated_count_to/': RouteRecordInfo<
-      '/feature/component/built_in/animated_count_to/',
-      '/feature/component/built_in/animated_count_to',
+    '/feature/component/built_in/alert/': RouteRecordInfo<
+      '/feature/component/built_in/alert/',
+      '/feature/component/built_in/alert',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -75,20 +75,6 @@ declare module 'vue-router/auto-routes' {
     '/feature/component/built_in/badge/': RouteRecordInfo<
       '/feature/component/built_in/badge/',
       '/feature/component/built_in/badge',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/feature/component/built_in/blur_reveal/': RouteRecordInfo<
-      '/feature/component/built_in/blur_reveal/',
-      '/feature/component/built_in/blur_reveal',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/feature/component/built_in/border_beam/': RouteRecordInfo<
-      '/feature/component/built_in/border_beam/',
-      '/feature/component/built_in/border_beam',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -121,16 +107,9 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
-    '/feature/component/built_in/count_to/': RouteRecordInfo<
-      '/feature/component/built_in/count_to/',
-      '/feature/component/built_in/count_to',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/feature/component/built_in/digital_card/': RouteRecordInfo<
-      '/feature/component/built_in/digital_card/',
-      '/feature/component/built_in/digital_card',
+    '/feature/component/built_in/checkbox_group/': RouteRecordInfo<
+      '/feature/component/built_in/checkbox_group/',
+      '/feature/component/built_in/checkbox_group',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -149,27 +128,6 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
-    '/feature/component/built_in/empty/': RouteRecordInfo<
-      '/feature/component/built_in/empty/',
-      '/feature/component/built_in/empty',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/feature/component/built_in/flip_words/': RouteRecordInfo<
-      '/feature/component/built_in/flip_words/',
-      '/feature/component/built_in/flip_words',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/feature/component/built_in/gradient_button/': RouteRecordInfo<
-      '/feature/component/built_in/gradient_button/',
-      '/feature/component/built_in/gradient_button',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
     '/feature/component/built_in/input/': RouteRecordInfo<
       '/feature/component/built_in/input/',
       '/feature/component/built_in/input',
@@ -184,23 +142,9 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
-    '/feature/component/built_in/marquee/': RouteRecordInfo<
-      '/feature/component/built_in/marquee/',
-      '/feature/component/built_in/marquee',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
     '/feature/component/built_in/modal/': RouteRecordInfo<
       '/feature/component/built_in/modal/',
       '/feature/component/built_in/modal',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/feature/component/built_in/multi_step_loader/': RouteRecordInfo<
-      '/feature/component/built_in/multi_step_loader/',
-      '/feature/component/built_in/multi_step_loader',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -212,30 +156,9 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
-    '/feature/component/built_in/particles_bg/': RouteRecordInfo<
-      '/feature/component/built_in/particles_bg/',
-      '/feature/component/built_in/particles_bg',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/feature/component/built_in/pattern_bg/': RouteRecordInfo<
-      '/feature/component/built_in/pattern_bg/',
-      '/feature/component/built_in/pattern_bg',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/feature/component/built_in/qrcode/': RouteRecordInfo<
-      '/feature/component/built_in/qrcode/',
-      '/feature/component/built_in/qrcode',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/feature/component/built_in/scratch_off/': RouteRecordInfo<
-      '/feature/component/built_in/scratch_off/',
-      '/feature/component/built_in/scratch_off',
+    '/feature/component/built_in/radio_group/': RouteRecordInfo<
+      '/feature/component/built_in/radio_group/',
+      '/feature/component/built_in/radio_group',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -243,13 +166,6 @@ declare module 'vue-router/auto-routes' {
     '/feature/component/built_in/scroll_area/': RouteRecordInfo<
       '/feature/component/built_in/scroll_area/',
       '/feature/component/built_in/scroll_area',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/feature/component/built_in/scrolling_text/': RouteRecordInfo<
-      '/feature/component/built_in/scrolling_text/',
-      '/feature/component/built_in/scrolling_text',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -268,34 +184,6 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
-    '/feature/component/built_in/smooth_swipe/': RouteRecordInfo<
-      '/feature/component/built_in/smooth_swipe/',
-      '/feature/component/built_in/smooth_swipe',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/feature/component/built_in/sparkles_text/': RouteRecordInfo<
-      '/feature/component/built_in/sparkles_text/',
-      '/feature/component/built_in/sparkles_text',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/feature/component/built_in/sparkline/': RouteRecordInfo<
-      '/feature/component/built_in/sparkline/',
-      '/feature/component/built_in/sparkline',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/feature/component/built_in/spring_drawer/': RouteRecordInfo<
-      '/feature/component/built_in/spring_drawer/',
-      '/feature/component/built_in/spring_drawer',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
     '/feature/component/built_in/switch/': RouteRecordInfo<
       '/feature/component/built_in/switch/',
       '/feature/component/built_in/switch',
@@ -310,27 +198,6 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
-    '/feature/component/built_in/text_highlight/': RouteRecordInfo<
-      '/feature/component/built_in/text_highlight/',
-      '/feature/component/built_in/text_highlight',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/feature/component/built_in/time_ago/': RouteRecordInfo<
-      '/feature/component/built_in/time_ago/',
-      '/feature/component/built_in/time_ago',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/feature/component/built_in/timeline/': RouteRecordInfo<
-      '/feature/component/built_in/timeline/',
-      '/feature/component/built_in/timeline',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
     '/feature/component/built_in/toast/': RouteRecordInfo<
       '/feature/component/built_in/toast/',
       '/feature/component/built_in/toast',
@@ -341,6 +208,160 @@ declare module 'vue-router/auto-routes' {
     '/feature/component/built_in/trend/': RouteRecordInfo<
       '/feature/component/built_in/trend/',
       '/feature/component/built_in/trend',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/feature/component/built_in_pro/animated_count_to/': RouteRecordInfo<
+      '/feature/component/built_in_pro/animated_count_to/',
+      '/feature/component/built_in_pro/animated_count_to',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/feature/component/built_in_pro/blur_reveal/': RouteRecordInfo<
+      '/feature/component/built_in_pro/blur_reveal/',
+      '/feature/component/built_in_pro/blur_reveal',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/feature/component/built_in_pro/border_beam/': RouteRecordInfo<
+      '/feature/component/built_in_pro/border_beam/',
+      '/feature/component/built_in_pro/border_beam',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/feature/component/built_in_pro/count_to/': RouteRecordInfo<
+      '/feature/component/built_in_pro/count_to/',
+      '/feature/component/built_in_pro/count_to',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/feature/component/built_in_pro/digital_card/': RouteRecordInfo<
+      '/feature/component/built_in_pro/digital_card/',
+      '/feature/component/built_in_pro/digital_card',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/feature/component/built_in_pro/empty/': RouteRecordInfo<
+      '/feature/component/built_in_pro/empty/',
+      '/feature/component/built_in_pro/empty',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/feature/component/built_in_pro/flip_words/': RouteRecordInfo<
+      '/feature/component/built_in_pro/flip_words/',
+      '/feature/component/built_in_pro/flip_words',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/feature/component/built_in_pro/gradient_button/': RouteRecordInfo<
+      '/feature/component/built_in_pro/gradient_button/',
+      '/feature/component/built_in_pro/gradient_button',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/feature/component/built_in_pro/marquee/': RouteRecordInfo<
+      '/feature/component/built_in_pro/marquee/',
+      '/feature/component/built_in_pro/marquee',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/feature/component/built_in_pro/multi_step_loader/': RouteRecordInfo<
+      '/feature/component/built_in_pro/multi_step_loader/',
+      '/feature/component/built_in_pro/multi_step_loader',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/feature/component/built_in_pro/particles_bg/': RouteRecordInfo<
+      '/feature/component/built_in_pro/particles_bg/',
+      '/feature/component/built_in_pro/particles_bg',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/feature/component/built_in_pro/pattern_bg/': RouteRecordInfo<
+      '/feature/component/built_in_pro/pattern_bg/',
+      '/feature/component/built_in_pro/pattern_bg',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/feature/component/built_in_pro/qrcode/': RouteRecordInfo<
+      '/feature/component/built_in_pro/qrcode/',
+      '/feature/component/built_in_pro/qrcode',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/feature/component/built_in_pro/scratch_off/': RouteRecordInfo<
+      '/feature/component/built_in_pro/scratch_off/',
+      '/feature/component/built_in_pro/scratch_off',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/feature/component/built_in_pro/scrolling_text/': RouteRecordInfo<
+      '/feature/component/built_in_pro/scrolling_text/',
+      '/feature/component/built_in_pro/scrolling_text',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/feature/component/built_in_pro/smooth_swipe/': RouteRecordInfo<
+      '/feature/component/built_in_pro/smooth_swipe/',
+      '/feature/component/built_in_pro/smooth_swipe',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/feature/component/built_in_pro/sparkles_text/': RouteRecordInfo<
+      '/feature/component/built_in_pro/sparkles_text/',
+      '/feature/component/built_in_pro/sparkles_text',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/feature/component/built_in_pro/sparkline/': RouteRecordInfo<
+      '/feature/component/built_in_pro/sparkline/',
+      '/feature/component/built_in_pro/sparkline',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/feature/component/built_in_pro/spring_drawer/': RouteRecordInfo<
+      '/feature/component/built_in_pro/spring_drawer/',
+      '/feature/component/built_in_pro/spring_drawer',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/feature/component/built_in_pro/text_highlight/': RouteRecordInfo<
+      '/feature/component/built_in_pro/text_highlight/',
+      '/feature/component/built_in_pro/text_highlight',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/feature/component/built_in_pro/time_ago/': RouteRecordInfo<
+      '/feature/component/built_in_pro/time_ago/',
+      '/feature/component/built_in_pro/time_ago',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/feature/component/built_in_pro/timeline/': RouteRecordInfo<
+      '/feature/component/built_in_pro/timeline/',
+      '/feature/component/built_in_pro/timeline',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -690,9 +711,9 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
-    'src/views/feature/component/built_in/animated_count_to/index.vue': {
+    'src/views/feature/component/built_in/alert/index.vue': {
       routes:
-        | '/feature/component/built_in/animated_count_to/'
+        | '/feature/component/built_in/alert/'
       views:
         | never
     }
@@ -705,18 +726,6 @@ declare module 'vue-router/auto-routes' {
     'src/views/feature/component/built_in/badge/index.vue': {
       routes:
         | '/feature/component/built_in/badge/'
-      views:
-        | never
-    }
-    'src/views/feature/component/built_in/blur_reveal/index.vue': {
-      routes:
-        | '/feature/component/built_in/blur_reveal/'
-      views:
-        | never
-    }
-    'src/views/feature/component/built_in/border_beam/index.vue': {
-      routes:
-        | '/feature/component/built_in/border_beam/'
       views:
         | never
     }
@@ -744,15 +753,9 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
-    'src/views/feature/component/built_in/count_to/index.vue': {
+    'src/views/feature/component/built_in/checkbox_group/index.vue': {
       routes:
-        | '/feature/component/built_in/count_to/'
-      views:
-        | never
-    }
-    'src/views/feature/component/built_in/digital_card/index.vue': {
-      routes:
-        | '/feature/component/built_in/digital_card/'
+        | '/feature/component/built_in/checkbox_group/'
       views:
         | never
     }
@@ -768,24 +771,6 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
-    'src/views/feature/component/built_in/empty/index.vue': {
-      routes:
-        | '/feature/component/built_in/empty/'
-      views:
-        | never
-    }
-    'src/views/feature/component/built_in/flip_words/index.vue': {
-      routes:
-        | '/feature/component/built_in/flip_words/'
-      views:
-        | never
-    }
-    'src/views/feature/component/built_in/gradient_button/index.vue': {
-      routes:
-        | '/feature/component/built_in/gradient_button/'
-      views:
-        | never
-    }
     'src/views/feature/component/built_in/input/index.vue': {
       routes:
         | '/feature/component/built_in/input/'
@@ -798,21 +783,9 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
-    'src/views/feature/component/built_in/marquee/index.vue': {
-      routes:
-        | '/feature/component/built_in/marquee/'
-      views:
-        | never
-    }
     'src/views/feature/component/built_in/modal/index.vue': {
       routes:
         | '/feature/component/built_in/modal/'
-      views:
-        | never
-    }
-    'src/views/feature/component/built_in/multi_step_loader/index.vue': {
-      routes:
-        | '/feature/component/built_in/multi_step_loader/'
       views:
         | never
     }
@@ -822,39 +795,15 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
-    'src/views/feature/component/built_in/particles_bg/index.vue': {
+    'src/views/feature/component/built_in/radio_group/index.vue': {
       routes:
-        | '/feature/component/built_in/particles_bg/'
-      views:
-        | never
-    }
-    'src/views/feature/component/built_in/pattern_bg/index.vue': {
-      routes:
-        | '/feature/component/built_in/pattern_bg/'
-      views:
-        | never
-    }
-    'src/views/feature/component/built_in/qrcode/index.vue': {
-      routes:
-        | '/feature/component/built_in/qrcode/'
-      views:
-        | never
-    }
-    'src/views/feature/component/built_in/scratch_off/index.vue': {
-      routes:
-        | '/feature/component/built_in/scratch_off/'
+        | '/feature/component/built_in/radio_group/'
       views:
         | never
     }
     'src/views/feature/component/built_in/scroll_area/index.vue': {
       routes:
         | '/feature/component/built_in/scroll_area/'
-      views:
-        | never
-    }
-    'src/views/feature/component/built_in/scrolling_text/index.vue': {
-      routes:
-        | '/feature/component/built_in/scrolling_text/'
       views:
         | never
     }
@@ -870,30 +819,6 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
-    'src/views/feature/component/built_in/smooth_swipe/index.vue': {
-      routes:
-        | '/feature/component/built_in/smooth_swipe/'
-      views:
-        | never
-    }
-    'src/views/feature/component/built_in/sparkles_text/index.vue': {
-      routes:
-        | '/feature/component/built_in/sparkles_text/'
-      views:
-        | never
-    }
-    'src/views/feature/component/built_in/sparkline/index.vue': {
-      routes:
-        | '/feature/component/built_in/sparkline/'
-      views:
-        | never
-    }
-    'src/views/feature/component/built_in/spring_drawer/index.vue': {
-      routes:
-        | '/feature/component/built_in/spring_drawer/'
-      views:
-        | never
-    }
     'src/views/feature/component/built_in/switch/index.vue': {
       routes:
         | '/feature/component/built_in/switch/'
@@ -906,24 +831,6 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
-    'src/views/feature/component/built_in/text_highlight/index.vue': {
-      routes:
-        | '/feature/component/built_in/text_highlight/'
-      views:
-        | never
-    }
-    'src/views/feature/component/built_in/time_ago/index.vue': {
-      routes:
-        | '/feature/component/built_in/time_ago/'
-      views:
-        | never
-    }
-    'src/views/feature/component/built_in/timeline/index.vue': {
-      routes:
-        | '/feature/component/built_in/timeline/'
-      views:
-        | never
-    }
     'src/views/feature/component/built_in/toast/index.vue': {
       routes:
         | '/feature/component/built_in/toast/'
@@ -933,6 +840,138 @@ declare module 'vue-router/auto-routes' {
     'src/views/feature/component/built_in/trend/index.vue': {
       routes:
         | '/feature/component/built_in/trend/'
+      views:
+        | never
+    }
+    'src/views/feature/component/built_in_pro/animated_count_to/index.vue': {
+      routes:
+        | '/feature/component/built_in_pro/animated_count_to/'
+      views:
+        | never
+    }
+    'src/views/feature/component/built_in_pro/blur_reveal/index.vue': {
+      routes:
+        | '/feature/component/built_in_pro/blur_reveal/'
+      views:
+        | never
+    }
+    'src/views/feature/component/built_in_pro/border_beam/index.vue': {
+      routes:
+        | '/feature/component/built_in_pro/border_beam/'
+      views:
+        | never
+    }
+    'src/views/feature/component/built_in_pro/count_to/index.vue': {
+      routes:
+        | '/feature/component/built_in_pro/count_to/'
+      views:
+        | never
+    }
+    'src/views/feature/component/built_in_pro/digital_card/index.vue': {
+      routes:
+        | '/feature/component/built_in_pro/digital_card/'
+      views:
+        | never
+    }
+    'src/views/feature/component/built_in_pro/empty/index.vue': {
+      routes:
+        | '/feature/component/built_in_pro/empty/'
+      views:
+        | never
+    }
+    'src/views/feature/component/built_in_pro/flip_words/index.vue': {
+      routes:
+        | '/feature/component/built_in_pro/flip_words/'
+      views:
+        | never
+    }
+    'src/views/feature/component/built_in_pro/gradient_button/index.vue': {
+      routes:
+        | '/feature/component/built_in_pro/gradient_button/'
+      views:
+        | never
+    }
+    'src/views/feature/component/built_in_pro/marquee/index.vue': {
+      routes:
+        | '/feature/component/built_in_pro/marquee/'
+      views:
+        | never
+    }
+    'src/views/feature/component/built_in_pro/multi_step_loader/index.vue': {
+      routes:
+        | '/feature/component/built_in_pro/multi_step_loader/'
+      views:
+        | never
+    }
+    'src/views/feature/component/built_in_pro/particles_bg/index.vue': {
+      routes:
+        | '/feature/component/built_in_pro/particles_bg/'
+      views:
+        | never
+    }
+    'src/views/feature/component/built_in_pro/pattern_bg/index.vue': {
+      routes:
+        | '/feature/component/built_in_pro/pattern_bg/'
+      views:
+        | never
+    }
+    'src/views/feature/component/built_in_pro/qrcode/index.vue': {
+      routes:
+        | '/feature/component/built_in_pro/qrcode/'
+      views:
+        | never
+    }
+    'src/views/feature/component/built_in_pro/scratch_off/index.vue': {
+      routes:
+        | '/feature/component/built_in_pro/scratch_off/'
+      views:
+        | never
+    }
+    'src/views/feature/component/built_in_pro/scrolling_text/index.vue': {
+      routes:
+        | '/feature/component/built_in_pro/scrolling_text/'
+      views:
+        | never
+    }
+    'src/views/feature/component/built_in_pro/smooth_swipe/index.vue': {
+      routes:
+        | '/feature/component/built_in_pro/smooth_swipe/'
+      views:
+        | never
+    }
+    'src/views/feature/component/built_in_pro/sparkles_text/index.vue': {
+      routes:
+        | '/feature/component/built_in_pro/sparkles_text/'
+      views:
+        | never
+    }
+    'src/views/feature/component/built_in_pro/sparkline/index.vue': {
+      routes:
+        | '/feature/component/built_in_pro/sparkline/'
+      views:
+        | never
+    }
+    'src/views/feature/component/built_in_pro/spring_drawer/index.vue': {
+      routes:
+        | '/feature/component/built_in_pro/spring_drawer/'
+      views:
+        | never
+    }
+    'src/views/feature/component/built_in_pro/text_highlight/index.vue': {
+      routes:
+        | '/feature/component/built_in_pro/text_highlight/'
+      views:
+        | never
+    }
+    'src/views/feature/component/built_in_pro/time_ago/index.vue': {
+      routes:
+        | '/feature/component/built_in_pro/time_ago/'
+      views:
+        | never
+    }
+    'src/views/feature/component/built_in_pro/timeline/index.vue': {
+      routes:
+        | '/feature/component/built_in_pro/timeline/'
       views:
         | never
     }

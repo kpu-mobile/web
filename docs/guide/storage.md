@@ -8,7 +8,7 @@
 
 ```yaml
 # localStorage/sessionStorage 前缀
-VITE_APP_STORAGE_PREFIX = fm_
+VITE_APP_STORAGE_PREFIX = km_
 ```
 
 然后就可以继续使用 `localStorage` 和 `sessionStorage` 了，框架重写了 `localStorage` 和 `sessionStorage` ，所以使用方式和原来一样，并且还增加了 2 个 API：

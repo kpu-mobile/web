@@ -215,9 +215,8 @@ const data: {
     icon: 'i-bx:bxs-component',
     routes: [
       {
-        path: '/feature/component/built_in/animated_count_to/',
-        title: '数字动画',
-        pro: true,
+        path: '/feature/component/built_in/alert/',
+        title: '提示',
       },
       {
         path: '/feature/component/built_in/avatar/',
@@ -226,16 +225,6 @@ const data: {
       {
         path: '/feature/component/built_in/badge/',
         title: '徽章',
-      },
-      {
-        path: '/feature/component/built_in/blur_reveal/',
-        title: '模糊揭示',
-        pro: true,
-      },
-      {
-        path: '/feature/component/built_in/border_beam/',
-        title: '边框光束',
-        pro: true,
       },
       {
         path: '/feature/component/built_in/button/',
@@ -254,14 +243,8 @@ const data: {
         title: '复选框',
       },
       {
-        path: '/feature/component/built_in/count_to/',
-        title: '计数到',
-        pro: true,
-      },
-      {
-        path: '/feature/component/built_in/digital_card/',
-        title: '数字卡片',
-        pro: true,
+        path: '/feature/component/built_in/checkbox_group/',
+        title: '复选框组',
       },
       {
         path: '/feature/component/built_in/divider/',
@@ -272,21 +255,6 @@ const data: {
         title: '抽屉',
       },
       {
-        path: '/feature/component/built_in/empty/',
-        title: '空状态',
-        pro: true,
-      },
-      {
-        path: '/feature/component/built_in/flip_words/',
-        title: '翻转文字',
-        pro: true,
-      },
-      {
-        path: '/feature/component/built_in/gradient_button/',
-        title: '渐变按钮',
-        pro: true,
-      },
-      {
         path: '/feature/component/built_in/input/',
         title: '输入框',
       },
@@ -295,51 +263,20 @@ const data: {
         title: '加载遮罩',
       },
       {
-        path: '/feature/component/built_in/marquee/',
-        title: '跑马灯',
-        pro: true,
-      },
-      {
         path: '/feature/component/built_in/modal/',
         title: '弹窗',
-      },
-      {
-        path: '/feature/component/built_in/multi_step_loader/',
-        title: '多步骤加载器',
-        pro: true,
       },
       {
         path: '/feature/component/built_in/page_main/',
         title: '内容块',
       },
       {
-        path: '/feature/component/built_in/particles_bg/',
-        title: '粒子背景',
-        pro: true,
-      },
-      {
-        path: '/feature/component/built_in/pattern_bg/',
-        title: '图案背景',
-        pro: true,
-      },
-      {
-        path: '/feature/component/built_in/qrcode/',
-        title: '二维码',
-        pro: true,
-      },
-      {
-        path: '/feature/component/built_in/scratch_off/',
-        title: '刮刮乐',
-        pro: true,
+        path: '/feature/component/built_in/radio_group/',
+        title: '单选组',
       },
       {
         path: '/feature/component/built_in/scroll_area/',
         title: '滚动区域',
-      },
-      {
-        path: '/feature/component/built_in/scrolling_text/',
-        title: '滚动文字',
-        pro: true,
       },
       {
         path: '/feature/component/built_in/select/',
@@ -350,26 +287,6 @@ const data: {
         title: '滑块',
       },
       {
-        path: '/feature/component/built_in/smooth_swipe/',
-        title: '平滑滚动',
-        pro: true,
-      },
-      {
-        path: '/feature/component/built_in/sparkles_text/',
-        title: '闪烁文字',
-        pro: true,
-      },
-      {
-        path: '/feature/component/built_in/sparkline/',
-        title: '迷你图',
-        pro: true,
-      },
-      {
-        path: '/feature/component/built_in/spring_drawer/',
-        title: '弹簧抽屉',
-        pro: true,
-      },
-      {
         path: '/feature/component/built_in/switch/',
         title: '开关',
       },
@@ -378,27 +295,128 @@ const data: {
         title: '标签页',
       },
       {
-        path: '/feature/component/built_in/text_highlight/',
-        title: '文字高亮',
-        pro: true,
-      },
-      {
-        path: '/feature/component/built_in/time_ago/',
-        title: '可阅读时间',
-        pro: true,
-      },
-      {
-        path: '/feature/component/built_in/timeline/',
-        title: '时间线',
-        pro: true,
-      },
-      {
         path: '/feature/component/built_in/toast/',
         title: '轻提示',
       },
       {
         path: '/feature/component/built_in/trend/',
         title: '趋势符号',
+      },
+    ],
+  },
+  {
+    title: '内建组件(专业版)',
+    icon: 'i-bx:bxs-component',
+    routes: [
+      {
+        path: '/feature/component/built_in_pro/animated_count_to/',
+        title: '数字动画',
+        pro: !0,
+      },
+      {
+        path: '/feature/component/built_in_pro/blur_reveal/',
+        title: '模糊揭示',
+        pro: !0,
+      },
+      {
+        path: '/feature/component/built_in_pro/border_beam/',
+        title: '边框光束',
+        pro: !0,
+      },
+      {
+        path: '/feature/component/built_in_pro/count_to/',
+        title: '计数到',
+        pro: !0,
+      },
+      {
+        path: '/feature/component/built_in_pro/digital_card/',
+        title: '数字卡片',
+        pro: !0,
+      },
+      {
+        path: '/feature/component/built_in_pro/empty/',
+        title: '空状态',
+        pro: !0,
+      },
+      {
+        path: '/feature/component/built_in_pro/flip_words/',
+        title: '翻转文字',
+        pro: !0,
+      },
+      {
+        path: '/feature/component/built_in_pro/gradient_button/',
+        title: '渐变按钮',
+        pro: !0,
+      },
+      {
+        path: '/feature/component/built_in_pro/marquee/',
+        title: '跑马灯',
+        pro: !0,
+      },
+      {
+        path: '/feature/component/built_in_pro/multi_step_loader/',
+        title: '多步骤加载器',
+        pro: !0,
+      },
+      {
+        path: '/feature/component/built_in_pro/particles_bg/',
+        title: '粒子背景',
+        pro: !0,
+      },
+      {
+        path: '/feature/component/built_in_pro/pattern_bg/',
+        title: '图案背景',
+        pro: !0,
+      },
+      {
+        path: '/feature/component/built_in_pro/qrcode/',
+        title: '二维码',
+        pro: !0,
+      },
+      {
+        path: '/feature/component/built_in_pro/scratch_off/',
+        title: '刮刮乐',
+        pro: !0,
+      },
+      {
+        path: '/feature/component/built_in_pro/scrolling_text/',
+        title: '滚动文字',
+        pro: !0,
+      },
+      {
+        path: '/feature/component/built_in_pro/smooth_swipe/',
+        title: '平滑滚动',
+        pro: !0,
+      },
+      {
+        path: '/feature/component/built_in_pro/sparkles_text/',
+        title: '闪烁文字',
+        pro: !0,
+      },
+      {
+        path: '/feature/component/built_in_pro/sparkline/',
+        title: '迷你图',
+        pro: !0,
+      },
+      {
+        path: '/feature/component/built_in_pro/spring_drawer/',
+        title: '弹簧抽屉',
+        pro: !0,
+      },
+      {
+        path: '/feature/component/built_in_pro/text_highlight/',
+        title: '文字高亮',
+        pro: !0,
+      },
+      {
+        path: '/feature/component/built_in_pro/time_ago/',
+        title: '可阅读时间',
+        pro: !0,
+      },
+      {
+        path: '/feature/component/built_in_pro/timeline/',
+        title: '时间线',
+        pro: !0,
       },
     ],
   },

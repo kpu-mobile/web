@@ -170,8 +170,8 @@ function showMessage(msg: string) { alert(msg) }
 <script setup>
 import { kmToast } from '@/ui/components/KmToast'
 
-function showSuccess() { kmToast.success('操作成功') }
-function showError() { kmToast.error('操作失败') }
+function showSuccess() { useKmToast().success('操作成功') }
+function showError() { useKmToast().error('操作失败') }
 </script>
 ```
 

@@ -1,6 +1,6 @@
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import themes from '@kpu-mobile/themes'
+import { BASE_COLORS, FRAMEWORK_COLORS, THEMES } from '@kpu-mobile/themes'
 import { entriesToCss, toArray } from '@unocss/core'
 import { createRemToPxProcessor } from '@unocss/preset-wind4/utils'
 import presetSafeArea from '@yeungkc/unocss-preset-safe-area'
@@ -81,26 +81,44 @@ export default defineConfig({
       preflights: [
         {
           getCSS: () => {
-            // const returnCss: any = []
-            // // 明亮主题
-            // const lightCss = entriesToCss(Object.entries(lightTheme))
-            // returnCss.push(`:root{${lightCss}}`)
-            // // 暗黑主题
-            // const darkCss = entriesToCss(Object.entries(darkTheme))
-            // returnCss.push(`html.dark{${darkCss}}`)
             const returnCss: any = []
-            Object.keys(themes).forEach((theme) => {
-              Object.keys(themes[theme]).forEach((colorScheme) => {
-                const css = entriesToCss(Object.entries(themes[theme][colorScheme]))
-                // console.log(css)
+            Object.keys(BASE_COLORS).forEach((theme) => {
+              const baseColorTheme = BASE_COLORS[theme as keyof typeof BASE_COLORS]
+              Object.keys(baseColorTheme).forEach((colorScheme) => {
+                const colorData = baseColorTheme[colorScheme as keyof typeof baseColorTheme]
+                const css = entriesToCss(Object.entries(colorData as Record<string, string>))
                 const roots = toArray(
                   colorScheme === 'light'
-                    ? [`[data-theme="${theme}"]`]
-                    : [`.dark[data-theme="${theme}"],[data-theme="${theme}"] .dark`],
+                    ? `[data-base-color="${theme}"]`
+                    : `[data-base-color="${theme}"].dark,[data-theme="${theme}"] .dark `,
                 )
                 returnCss.push(roots.map(root => `${root}{color-scheme:${colorScheme};${css}}`).join(''))
               })
             })
+            Object.keys(THEMES).forEach((theme) => {
+              const themeData = THEMES[theme as keyof typeof THEMES]
+              Object.keys(themeData).forEach((colorScheme) => {
+                const colorData = themeData[colorScheme as keyof typeof themeData]
+                const css = entriesToCss(Object.entries(colorData as Record<string, string>))
+                const roots = toArray(
+                  colorScheme === 'light'
+                    ? `[data-theme="${theme}"]`
+                    : `[data-theme="${theme}"].dark,[data-theme="${theme}"] .dark `,
+                )
+                returnCss.push(roots.map(root => `${root}{color-scheme:${colorScheme};${css}}`).join(''))
+              })
+            })
+            Object.keys(FRAMEWORK_COLORS).forEach((colorScheme) => {
+              const colorData = FRAMEWORK_COLORS[colorScheme as keyof typeof FRAMEWORK_COLORS]
+              const css = entriesToCss(Object.entries(colorData as Record<string, string>))
+              const roots = toArray(
+                colorScheme === 'light'
+                  ? `:root`
+                  : `:root.dark `,
+              )
+              returnCss.push(roots.map(root => `${root}{color-scheme:${colorScheme};${css}}`).join(''))
+            })
+
             return `
 ${returnCss.join('\n')}
 

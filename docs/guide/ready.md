@@ -21,7 +21,9 @@ git clone https://gitee.com/kpu-mobile/web.git
 
 ### 专业版
 
-专业版用户会被邀请加入到 [Kpu-mobile](https://github.com/kpu-mobile) Github 官方组织，加入组织后在专业版仓库 [Releases](https://github.com/kpu-mobile/pro/releases) 页面下载最新版本的压缩包。
+专业版用户会被邀请加入到 [Kpu-mobile](https://github.com/kpu-mobile) Github 官方组织，加入组织后在专业版仓库 [Releases](https://github.com/kpu-mobile/web/releases) 页面下载最新版本的压缩包。
+
+购买专业版点[这里](../buy)。
 
 ## 开发环境
 
@@ -29,7 +31,7 @@ git clone https://gitee.com/kpu-mobile/web.git
 
 ::: warning 注意
 
-- 在 [package.json](https://github.com/fantastic-admin/basic/blob/main/package.json#L6-L9) 文件中有限制 node 要求版本，建议使用最新 LTS 版本。
+- 在 [package.json](https://github.com/kpu-admin/basic/blob/main/package.json#L6-L9) 文件中有限制 node 要求版本，建议使用最新 LTS 版本。
 - 如果你不想使用 VSCode ，我们也强烈建议你使用基于 VSCode 内核的 IDE ，如 [Cursor](https://www.cursor.com/) 。
   :::
 
